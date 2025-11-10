@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    background-color: #1e1e1e;
+    color: #EAEAEA;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+header {
+    margin: 0 20px;
+    font-family: 'Montserrat', system-ui;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5em;
+    border-bottom: 1px solid lightgrey;
+    height: 70px;
+    padding: 1em 2em;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2em;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    color: #EAEAEA;
+    text-shadow: 0 0 1px white;
+}
+
+.nav-links a:hover {
+  color: #00bcd4;
+}
+
+/* Hamburger button (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #EAEAEA;
+  cursor: pointer;
+}
+
+.hero {
+    text-align: left;
+    flex-wrap: wrap;
+    display: flex;
+    /* border: 1px solid white; */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+    gap: 2rem;
+}
+
+#hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+#hero-title span {
+    color:  #00bcd4;
+}
+
+#hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #aaa;
+    margin-bottom: 1.5rem;
+}
+
+#hero-desc {
+  font-size: 1.1rem;        /* readable paragraph size */
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+#hero-goal {
+  font-size: 1rem;          /* slightly smaller secondary paragraph */
+  color: #ccc;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.left-hero {
+    min-width: 280px;
+    flex: 1 1 55%;
+    
+}
+
+.right-hero {
+    flex: 1 1 35%;
+    min-width: 300px;
+    height: auto;
+    background-image: url(./images/profile_pic.jpeg);
+    background-size: cover;
+    box-shadow: 0 0 25px rgba(0, 188, 212, 0.5); /* teal glow */
+    background-position: center 80%;
+    aspect-ratio: 1 / 1;
+
+}
+
+#logo {
+    width: 200px;
+    height: auto;
+    transform: scale(2);
+    transform-origin: center center;
+    margin-right: 1em;
+}
+
+/* responsive media queries */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #1e1e1e;
+    width: 200px;
+    padding: 1em;
+    gap: 1em;
+    display: none; /* hidden by default */
+    border-left: 1px solid #444;
+    box-shadow: -2px 2px 10px rgba(0,0,0,0.5);
+  }
+
+  .nav-links.show {
+    display: flex; /* show when toggled */
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse; /* image on top */
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .left-hero,
+  .right-hero {
+    width: 100%;
+  }
+
+  .right-hero {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1.5rem;
+    align-self: center;
+  }
+
+  #hero-title {
+    font-size: 2.2rem;
+  }
+
+  #hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  #hero-desc {
+    font-size: 1rem;
+  }
+
+  #hero-goal {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 500px) {
+  #hero-title {
+    font-size: 1.8rem;
+  }
+
+  #hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .right-hero {
+    width: 120px;
+    height: 120px;
+  }
+}
