@@ -37,6 +37,7 @@ header {
     padding: 0;
     gap: 2em;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .nav-links li a {
@@ -50,6 +51,21 @@ header {
 
 .nav-links a:hover {
   color: #00bcd4;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  background-color: #0077ff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #005ad6;
 }
 
 /* Hamburger button (hidden on desktop) */
@@ -150,12 +166,19 @@ main {
     list-style: none;
     display: flex;
     gap: 20px;
+    
 }
 
 #social-links i{
     color: white;
     font-size: 2em;
 }
+
+#social-links i:hover{
+    color: #005ad6;
+}
+
+
 
 /* responsive media queries */
 @media (max-width: 768px) {
