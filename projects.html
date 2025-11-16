@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav class="navbar">
-            <img id='logo' src="./images/logo.svg" alt="Shawn Yat Sin logo">
+            <img id='logo' src="./images/logo.png" alt="Shawn Yat Sin logo">
             <button class="nav-toggle" aria-label="Toggle navigation">
             ☰
             </button>
@@ -25,17 +25,9 @@
     </header>
     <main>
         <h1>Featured Projects</h1>
-        <p>Description</p>
-        <div class="projects-section">
-            <div class="project-container">
-                <!-- Project name
-                 Description
-                 Tech used (list)
-                 Button for github repo
-                 Button for demo -->
-            </div>
+        <p>Here are some of my recent projects that showcase my skills and experience in web development.</p>
+        <div id="projects-section">
         </div>
-
     </main>
     <footer id="footer">
         <p id="year"></p>
@@ -45,6 +37,7 @@
             <li><a href="mailto:shawnyatsin@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
         </ul>
     </footer>
-    <script src="./index.js"></script>
+    <script src="./index.js" type="module" defer></script>
+    <script src="./projects.js" type="module" defer></script>
 </body>
 </html>
