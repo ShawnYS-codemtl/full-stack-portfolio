@@ -12,6 +12,8 @@ header {
     font-family: 'Montserrat', system-ui;
 }
 
+/* Navbar */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -80,7 +82,10 @@ header {
 
 main {
     margin-top: 120px;
+    padding: 0 3rem;
 }
+
+/* Hero section */
 
 .hero {
     text-align: left;
@@ -142,6 +147,116 @@ main {
 
 }
 
+/* Project section */
+
+/* Container wrapping all projects */
+#projects-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual project card */
+.project-container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hover effect */
+.project-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* Project image */
+.project-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Project name */
+.project-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    color: black;
+}
+
+/* Description */
+.project-desc {
+    color: #aaa;
+    line-height: 1.5;
+    margin: 0.5rem 0 1rem;
+}
+
+/* Tech stack pills */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech {
+    background: #e6f1ff;
+    color: #003e8a;
+    padding: 0.25rem 0.6rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+/* Buttons */
+.project-btns {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.github-btn, .direct-link {
+    flex: 1;
+    text-align: center;
+    padding: 0.6rem 0;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+/* GitHub button */
+.github-btn {
+    background: #24292e;
+    color: white;
+}
+
+.github-btn:hover {
+    background: #000;
+}
+
+/* Demo button */
+.direct-link {
+    background: #2563eb;
+    color: white;
+}
+
+.direct-link:hover {
+    background: #1e40af;
+}
+
+
+/* Footer section */
+
 #logo {
     width: 200px;
     height: auto;
@@ -159,6 +274,7 @@ main {
     display: flex;
     padding: 2em 3em;
     justify-content: space-between;
+    border-top: 1px solid white;
 }
 
 #social-links {
