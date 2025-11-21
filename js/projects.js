@@ -1,4 +1,4 @@
-import { projects } from "./data/projectData.js"
+import { projects } from "../data/projectData.js"
 
 export function renderProjects(){
     console.log(projects)
@@ -22,8 +22,8 @@ export function renderProjects(){
                 ${techstackHtml}
             </div> 
             <div class="project-btns">
-                <a class="github-btn" href="${project.github_repo}"><i class="fa-brands fa-github"></i>  Code</a>
-                <a class="direct-link" href="${project.direct_link}"><i class="fa-solid fa-arrow-up-right-from-square"></i>  Demo</a>
+                <a class="github-btn" href="${project.github_repo}" target="_blank"><i class="fa-brands fa-github" ></i>  Code</a>
+                <a class="direct-link" href="${project.direct_link}" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i>  Demo</a>
             </div>
         </div>`
 
