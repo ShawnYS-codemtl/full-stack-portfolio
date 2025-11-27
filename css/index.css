@@ -137,14 +137,19 @@ main {
 
 .right-hero {
     flex: 1 1 35%;
-    min-width: 300px;
-    height: auto;
-    background-image: url(./images/profile_pic.jpeg);
-    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;              /* Ensures clean cropping */
+    border-radius: 12px;           /* Optional, makes it look nicer */
     box-shadow: 0 0 25px rgba(0, 188, 212, 0.5); /* teal glow */
-    background-position: center 80%;
-    aspect-ratio: 1 / 1;
+}
 
+.right-hero > img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
 }
 
 /* Project section */
@@ -334,8 +339,7 @@ main {
   }
 
   .right-hero {
-    width: 150px;
-    height: 150px;
+    width: 100%;
     margin-bottom: 1.5rem;
     align-self: center;
   }
