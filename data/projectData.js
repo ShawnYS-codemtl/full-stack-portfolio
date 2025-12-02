@@ -5,7 +5,7 @@ export const projects = [
         "technologies": ['HTML', 'CSS', 'JS', 'DOM Manipulation', 'LocalStorage'],
         "github_repo": "https://github.com/ShawnYS-codemtl/productivity-dashboard",
         "direct_link": "https://shawnys-codemtl.github.io/productivity-dashboard/",
-        "img" : "/images/productivity-dashboard.png"
+        "img" : "images/productivity-dashboard.png"
     },
     {
         "name": "Checkers Type Games",
@@ -13,7 +13,7 @@ export const projects = [
         "technologies": ['TypeScript', 'React', 'Tailwind'],
         "github_repo": "https://github.com/ShawnYS-codemtl/checkers-type-games",
         "direct_link": "https://checkerstypegames.netlify.app/",
-        "img" : "/images/checkers_games.png"
+        "img" : "images/checkers_games.png"
     },
     {
         "name": "Mars Rover Simulator",
@@ -21,7 +21,7 @@ export const projects = [
         "technologies": ['Python', 'pygame', 'SQL', 'MongoDB', 'Rasterio'],
         "github_repo": "https://github.com/ShawnYS-codemtl/mars-rover-simulator",
         "direct_link": null,
-        "img" : "/images/mars-rover.png"
+        "img" : "images/mars-rover.png"
     },
     {
         "name": "Anime Tracker",
@@ -29,7 +29,7 @@ export const projects = [
         "technologies": ['Swift', 'Kingfisher', 'XCode', 'AltStore'],
         "github_repo": "https://github.com/ShawnYS-codemtl/anime-tracker",
         "direct_link": null,
-        "img" : "/images/animetracker.png"
+        "img" : "images/animetracker.png"
     },
     {
         "name": "Chef Claude",
@@ -37,6 +37,6 @@ export const projects = [
         "technologies": ["React", "Node.js", "Express", "CORS", "Anthropic Claude AI"],
         "github_repo": "https://github.com/ShawnYS-codemtl/chef-claude",
         "direct_link": "https://shawnys-codemtl.github.io/chef-claude/",
-        "img" : "/images/chef-claude.png"
+        "img" : "images/chef-claude.png"
     }
 ]
