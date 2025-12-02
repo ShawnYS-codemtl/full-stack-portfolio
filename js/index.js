@@ -1,4 +1,4 @@
-import { renderProjects } from "./projects.js";
+import { renderProjects, renderOngoingProjects } from "./projects.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.querySelector(".nav-toggle");
@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Render projects if container exists
     if (document.getElementById('projects-section')) {
         renderProjects()
+    }
+    if (document.getElementById('ongoing-projects-section')) {
+        renderOngoingProjects()
     }
 
     // Update footer year

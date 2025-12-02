@@ -155,7 +155,7 @@ main {
 /* Project section */
 
 /* Container wrapping all projects */
-#projects-section {
+#projects-section, #ongoing-projects-section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
@@ -188,6 +188,7 @@ main {
     height: 160px;
     object-fit: cover;
     border-radius: 10px;
+    border: 1px solid #1e1e1e;
 }
 
 /* Project name */
@@ -203,6 +204,7 @@ main {
     color: #aaa;
     line-height: 1.5;
     margin: 0.5rem 0 1rem;
+    min-height: 100px;
 }
 
 /* Tech stack pills */
@@ -211,6 +213,7 @@ main {
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    row-gap: 1rem;
 }
 
 .tech {
@@ -219,6 +222,7 @@ main {
     padding: 0.25rem 0.6rem;
     border-radius: 8px;
     font-size: 0.8rem;
+    margin: 0;
 }
 
 /* Buttons */

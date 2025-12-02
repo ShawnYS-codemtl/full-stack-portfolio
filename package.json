@@ -1,0 +1,13 @@
+{
+  "name": "full-stack-portfolio",
+  "version": "1.0.0",
+  "description": "Full-stack portfolio displaying projects and information about me for recruiters.",
+  "main": "/js/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
