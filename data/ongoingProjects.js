@@ -1,13 +1,5 @@
 export const ongoingProjects = [
     {
-        "name": "SmartlyGoals",
-        "desc": "A website to help in the process of constructing SMART goals with the help of AI.",
-        "technologies": ['React', 'AI API'],
-        "github_repo": "https://github.com/ShawnYS-codemtl/smartly-goals",
-        "direct_link": null,
-        "img" : null
-    },
-    {
         "name": "Sticker E-Commerce Website",
         "desc": "A sticker e-commerce website for my friend who designs and sells them.",
         "technologies": ['Next.js', 'Stripe', 'Authentication', 'Database'],
