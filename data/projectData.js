@@ -26,7 +26,7 @@ export const projects = [
     {
         "name": "Anime Tracker",
         "desc": "A SwiftUI-based iOS app that allows anime fans to search, discover, and track their favorite shows, featuring detailed show information and a personalized watchlist. ",
-        "technologies": ['Swift', 'Kingfisher', 'XCode', 'AltStore'],
+        "technologies": ['Swift', 'Kingfisher', 'XCode', 'AltStore', 'Jikan API'],
         "github_repo": "https://github.com/ShawnYS-codemtl/anime-tracker",
         "direct_link": null,
         "img" : "images/animetracker.png"
@@ -42,7 +42,7 @@ export const projects = [
     {
         "name": "Smartly Goals",
         "desc": "Interactive web app to create, refine, and export SMART goals with AI assistance ",
-        "technologies": ["React", "JavaScript","Hugging Face Inference API", "Vercel", "html2pdf.js"],
+        "technologies": ["React", "JavaScript","Hugging Face Inference API", "Vercel", "html2pdf.js", 'LocalStorage'],
         "github_repo": "https://github.com/ShawnYS-codemtl/smartly-goals",
         "direct_link": "https://smartly-goals-app.vercel.app/",
         "img" : "images/goals-section.png"
