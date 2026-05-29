@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shawn Yat Sin</title>
+    <title>About — Shawn Yat Sin</title>
+    <meta name="description" content="Learn about Shawn Yat Sin — McGill Software Engineering graduate (GPA 3.71), full-stack developer in Montreal with experience in React, Next.js, Python, and more.">
+    <meta property="og:title" content="About — Shawn Yat Sin">
+    <meta property="og:description" content="McGill Software Engineering graduate (GPA 3.71). Full-stack developer in Montreal building with React, Next.js, Node.js, Flask, and Supabase.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shawnys-codemtl.github.io/full-stack-portfolio/about.html">
+    <meta property="og:image" content="https://shawnys-codemtl.github.io/full-stack-portfolio/images/profile_pic.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About — Shawn Yat Sin">
+    <meta name="twitter:description" content="McGill Software Engineering graduate (GPA 3.71). Full-stack developer in Montreal building with React, Next.js, Node.js, Flask, and Supabase.">
+    <meta name="twitter:image" content="https://shawnys-codemtl.github.io/full-stack-portfolio/images/profile_pic.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/index.css">
-    
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+    </script>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <img id='logo' src="./images/logo.png" alt="Shawn Yat Sin logo">
-            <button class="nav-toggle" aria-label="Toggle navigation">
-            ☰
-            </button>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
             <ul class="nav-links">
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./projects.html">Projects</a></li>
                 <li><a href="./assets/resume-dec2025-3.pdf" target="_blank" class='download-btn'>Resume</a></li>
+                <li><button class="theme-toggle" aria-label="Switch to light mode">☀️</button></li>
             </ul>
         </nav>
     </header>
@@ -28,162 +39,228 @@
             <div class="about-intro">
                 <div class="about-text">
                     <h1 id="about-title">About Me 👋</h1>
-                    <p>Hey! I'm Shawn 😎, born and raised in the vibrant city of Montreal 🍁.</p>
-                    <p>My parents moved here from the tropical island of Mauritius 🌴, which gave me a love for diversity and adventure 🌏. </p>
-                    <p>I'm in my early twenties, figuring out life one step at a time 🚶‍♂️, and I love building projects that I actually want to use 💻✨. </p>
-                    <p>When I'm not coding, you might find me binging a show 📺, trying a new restaurant 🥢, or reading a book 📖.</p>
+                    <p>Hey! I'm Shawn 😎 , born and raised in the vibrant city of Montreal 🍁.</p>
+                    <p>My parents moved here from the tropical island of Mauritius 🌴 , which gave me a love for diversity and adventure 🌏. </p>
+                    <p>I'm in my early twenties, figuring out life one step at a time 🚶‍♂️ , and I love building projects that my friends and I would personally use 💻✨. </p>
+                    <p>When I'm not coding, you might find me binging a show 📺 , trying a new restaurant 🥢 , or reading a book 📖 — and when the sun's out, I'm probably outside running 🏃‍♂️ , biking 🚲 ,  skateboarding 🛹 or doing anything to enjoy the good weather🌞.</p>
                 </div>
-                <div class="about-image">
-                    <img src="./images/profile_pic.jpeg" alt="selfie">
-                </div>
-                
             </div>
 
+            <div class="carousel-section">
+                <div class="carousel">
+                    <img class="carousel-img active" src="./images/profile_pic.jpeg" alt="Shawn">
+                    <img class="carousel-img" src="./images/dbz_friends.jpg" alt="Shawn">
+                    <img class="carousel-img" src="./images/grad_dad.jpg" alt="Shawn">
+                    <img class="carousel-img" src="./images/grad_mom.jpg" alt="Shawn">
+                    <img class="carousel-img" src="./images/hksn_wel.jpg" alt="Shawn">
+                    <img class="carousel-img" src="./images/hksn.JPEG" alt="Shawn">
+                    <img class="carousel-img" src="./images/kid.JPG" alt="Shawn">
+                    <!-- Add more images here as you upload them to /images -->
+                    <div class="carousel-dots"></div>
+                </div>
+            </div>
 
             <h2 class="about-section">Technical Skills</h2>
             <div class="skills-grid">
-                <div class="card">
+                <div class="card fade-in">
                     <h3>Programming Languages</h3>
                     <div class="tag-list">
                         <span class="tag">Python</span>
-                        <span class="tag">Java</span>
                         <span class="tag">JavaScript</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Java</span>
                         <span class="tag">Swift</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
                         <span class="tag">SQL</span>
                     </div>
                 </div>
 
-                <div class="card">
-                    <h3>Frontend</h3>
+                <div class="card fade-in">
+                    <h3>Frameworks & Libraries</h3>
                     <div class="tag-list">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">Flexbox & CSS Grid</span>
-                        <span class="tag">Tailwind</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">React.js</span>
-                        <span class="tag">React Router</span>
-                        <span class="tag">Bootstrap</span>
-                        <span class="tag">Responsive design</span>
-                        <span class="tag">Chrome DevTools</span>
-                        <span class="tag">Accessibility (ARIA)</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Backend</h3>
-                    <div class="tag-list">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">React</span>
                         <span class="tag">Node.js</span>
                         <span class="tag">Express.js</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Database schema design</span>
-                        <span class="tag">REST API design</span>
-                        <span class="tag">WebSockets</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">SQLAlchemy</span>
                     </div>
                 </div>
 
-                <div class="card">
-                    <h3>Dev Tools</h3>
+                <div class="card fade-in">
+                    <h3>Tools</h3>
                     <div class="tag-list">
                         <span class="tag">Git</span>
                         <span class="tag">GitHub</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Jira</span>
+                        <span class="tag">Postman</span>
                         <span class="tag">VSCode</span>
                         <span class="tag">Xcode</span>
-                        <span class="tag">Postman</span>
-                        <span class="tag">Linux CLI</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Deployment (Render / Netlify / Vercel)</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">SQLite</span>
+                        <span class="tag">Unix</span>
+                        <span class="tag">Supabase</span>
+                        <span class="tag">Stripe</span>
+                        <span class="tag">Figma</span>
+                        <span class="tag">Vite</span>
+                        <span class="tag">Vercel</span>
+                        <span class="tag">Render</span>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <h3>Languages</h3>
+                    <div class="tag-list">
+                        <span class="tag">English</span>
+                        <span class="tag">French</span>
                     </div>
                 </div>
             </div>
 
-
             <h2 class="about-section">Education</h2>
-            <p>Graduated from McGill University — Winter 2025<br />Software Engineering, Faculty of Science</p>
-            <p><em>List of courses with grades...</em></p>
-
+            <p>McGill University — B.Sc. Software Engineering, Faculty of Science<br>2021–2025 &nbsp;·&nbsp; <strong>GPA: 3.71 / 4.0</strong></p>
+            <p class="education-courses">Relevant coursework: Data Structures & Algorithms, Database Systems, Software Design, Software Delivery, Software Validation, Operating Systems, Concurrent Programming</p>
 
             <section class="work-experience">
                 <h2 class="about-section">Work Experience 💼</h2>
 
-                <div class="job">
+                <div class="job fade-in">
                     <div class="job-header">
-                    <h3 class="job-title">Server</h3>
-                    <span class="job-date">Aug 2024 - Present</span>
+                        <h3 class="job-title">Server (Part-time)</h3>
+                        <span class="job-date">Aug 2024 - Present</span>
                     </div>
                     <p class="job-company">Sansotei Ramen</p>
                     <ul class="job-details">
-                    <li>Provided attentive and friendly service to customers in a fast-paced dining environment.</li>
-                    <li>Developed strong communication, multitasking, and problem-solving skills under pressure.</li>
-                    <li>Handled customer inquiries, requests, and complaints with professionalism and empathy.</li>
+                        <li>Operated effectively in a high-pressure, fast-paced environment, balancing customer communication, prioritization, and rapid context switching during peak service hours.</li>
+                        <li>Followed structured service processes with precision, demonstrating reliability, adaptability, and the ability to onboard quickly in a quality-critical workflow.</li>
                     </ul>
                 </div>
 
-                <div class="job">
+                <div class="job fade-in">
                     <div class="job-header">
-                    <h3 class="job-title">Sushi Chef</h3>
-                    <span class="job-date">May 2022 - Oct 2022</span>
+                        <h3 class="job-title">AI Language Contributor (Contract)</h3>
+                        <span class="job-date">Dec 2023 - Jan 2024</span>
+                    </div>
+                    <p class="job-company">Cheil Canada</p>
+                    <ul class="job-details">
+                        <li>Evaluated and reviewed AI-generated French language content using detailed guidelines, ensuring linguistic accuracy and consistency across large sample sets.</li>
+                        <li>Identified subtle errors and edge cases across 200+ entries, demonstrating strong attention to detail and analytical judgment.</li>
+                    </ul>
+                </div>
+
+                <div class="job fade-in">
+                    <div class="job-header">
+                        <h3 class="job-title">Sushi Chef (Part-time)</h3>
+                        <span class="job-date">May 2022 - Oct 2022</span>
                     </div>
                     <p class="job-company">Sushi Ya Matcha</p>
                     <ul class="job-details">
-                    <li>Prepared sushi and other menu items with attention to quality and presentation.</li>
-                    <li>Maintained kitchen cleanliness and adhered to food safety guidelines.</li>
-                    <li>Collaborated with team members to manage orders efficiently.</li>
+                        <li>Executed time-critical, detail-oriented tasks with consistency and accuracy in a high-volume production environment.</li>
+                        <li>Collaborated closely with teammates to maintain quality standards under pressure, adapting quickly to changing demand.</li>
                     </ul>
                 </div>
 
-                <div class="job">
+                <div class="job fade-in">
                     <div class="job-header">
-                        <h3 class="job-title">Camp Monitor</h3>
-                        <span class="job-date">Summer 2021</span>
+                        <h3 class="job-title">Summer Camp Monitor</h3>
+                        <span class="job-date">Jun 2021 - Aug 2021</span>
                     </div>
                     <p class="job-company">Pointe-Claire Day Camps</p>
                     <ul class="job-details">
-                    <li>Supervised and engaged with children in daily camp activities.</li>
-                    <li>Developed leadership and communication skills under high-pressure situations.</li>
-                    <li>Planned and implemented fun and safe activities for different age groups.</li>
+                        <li>Led and supervised groups of 20+ children, prioritizing safety, conflict resolution, and clear communication.</li>
+                        <li>Took ownership of activity coordination, demonstrating leadership, accountability, and situational awareness in a team-based environment.</li>
                     </ul>
                 </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <h3 class="job-title">Food Service Worker</h3>
-                        <span class="job-date">Jun 2020 - Jan 2022</span>
-                    </div>
-                    <p class="job-company">Dairy Queen</p>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <h3 class="job-title">Associate</h3>
-                        <span class="job-date">Jun 2019 - Sep 2019</span>
-                    </div>
-                    <p class="job-company">Dollarama</p>
-                </div>
+            </section>
 
             <h2 class="about-section">Hobbies & Interests</h2>
             <div class="tag-list">
-            <span class="tag">Bouldering</span>
-            <span class="tag">Volleyball</span>
-            <span class="tag">Pickleball</span>
-            <span class="tag">Judo</span>
-            <span class="tag">Reading</span>
-            <span class="tag">Anime</span>
-            <span class="tag">Gym</span>
+                <span class="tag">Bouldering</span>
+                <span class="tag">Volleyball</span>
+                <span class="tag">Pickleball</span>
+                <span class="tag">Judo</span>
+                <span class="tag">Reading</span>
+                <span class="tag">Anime</span>
+                <span class="tag">Gym</span>
             </div>
 
+            <h2 class="about-section">Activities & Leadership</h2>
+            <div class="activities-list">
+                <div class="activity fade-in">
+                    <div class="activity-header">
+                        <h3 class="activity-title">Webmaster</h3>
+                        <span class="activity-org">Nursing Undergrad Society, McGill University</span>
+                    </div>
+                    <p class="activity-desc">Rebuilding the society's website from Wix to a custom solution to reduce operating costs, while maintaining a reliable online presence for its community.</p>
+                </div>
+
+                <div class="activity fade-in">
+                    <div class="activity-header">
+                        <h3 class="activity-title">McGame Jam Participant</h3>
+                        <span class="activity-org">48-hour hackathon</span>
+                    </div>
+                    <p class="activity-desc">Developed a game prototype in a 4-person team within 48 hours using JavaScript, HTML, and the Phaser framework, focusing on rapid iteration and collaborative development under pressure.</p>
+                </div>
+
+                <div class="activity fade-in">
+                    <div class="activity-header">
+                        <h3 class="activity-title">Competitive Programming Participant</h3>
+                        <span class="activity-org">McGill University</span>
+                    </div>
+                    <p class="activity-desc">Competed in university-level algorithmic contests including NP Compete, solving complex problems under strict time constraints using Python.</p>
+                </div>
+
+                <div class="activity fade-in">
+                    <div class="activity-header">
+                        <h3 class="activity-title">VP Internal</h3>
+                        <span class="activity-org">Hong Kong Student Network, McGill University</span>
+                    </div>
+                    <p class="activity-desc">Managed internal operations for a 30-member club, coordinating 3+ events per semester to drive student engagement and support executive initiatives.</p>
+                </div>
+
+                <div class="activity fade-in">
+                    <div class="activity-header">
+                        <h3 class="activity-title">Selected Participant</h3>
+                        <span class="activity-org">Ivey/IIBC Career Trek, Hong Kong</span>
+                    </div>
+                    <p class="activity-desc">Chosen from a competitive cross-university applicant pool to engage with industry leaders across financial services, technology, and professional services in the Asia-Pacific region.</p>
+                </div>
+
+                <div class="activity fade-in">
+                    <div class="activity-header">
+                        <h3 class="activity-title">Dragon Boat Team Member</h3>
+                        <span class="activity-org">McGill University</span>
+                    </div>
+                    <p class="activity-desc">Trained and competed across two seasons, contributing to on-water synchronization and maintaining consistent commitment to team performance and conditioning.</p>
+                </div>
+
+                <div class="activity fade-in">
+                    <div class="activity-header">
+                        <h3 class="activity-title">Brown Belt, Judo</h3>
+                    </div>
+                    <p class="activity-desc">Achieved through over 15 years of dedicated training, demonstrating discipline, perseverance, and continuous skill development.</p>
+                </div>
+            </div>
 
             <h2 class="about-section">Goals</h2>
             <ul>
-                <li>Participate in a hackathon (Jan)</li>
-                <li>Start my career in tech</li>
-                <li>Learn an instrument</li>
+                <li>Learn 2 fingerstyle guitar songs</li>
+                <li>Build 12 projects by the end of 2026</li>
+                <li>Finish a V5 at a climbing gym</li>
             </ul>
-            </div>
-
+        </div>
     </main>
     <footer id="footer">
         <p id="year"></p>
+        <ul class="footer-nav">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./assets/Resume3-may2026.pdf" target="_blank">Resume</a></li>
+        </ul>
         <ul id="social-links">
             <li><a href="https://github.com/ShawnYS-codemtl" target="_blank"><i class="fa-brands fa-github"></i></a></li>
             <li><a href="https://linkedin.com/in/shawnyatsin" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
@@ -191,5 +268,6 @@
         </ul>
     </footer>
     <script src="./js/index.js" type="module" defer></script>
+    <script src="./js/about.js" type="module" defer></script>
 </body>
 </html>
