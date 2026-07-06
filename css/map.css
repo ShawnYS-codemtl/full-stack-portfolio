@@ -1,0 +1,486 @@
+/* ===== Map page — Pokémon-overworld styling ===== */
+
+.map-page {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pixel-title {
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.map-intro {
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.map-intro h1 {
+    font-size: clamp(1.1rem, 4vw, 1.8rem);
+    margin-bottom: 0.75rem;
+}
+
+.map-tagline {
+    margin: 0 auto 0.75rem;
+    max-width: 34rem;
+}
+
+.map-escape {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.map-escape a {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem;
+    color: #00bcd4;
+    text-decoration: none;
+    border-bottom: 2px dotted currentColor;
+    padding-bottom: 3px;
+}
+
+.map-escape a:hover,
+.map-escape a:focus-visible {
+    color: #f8d030;
+}
+
+[data-theme="light"] .map-escape a { color: #0077cc; }
+[data-theme="light"] .map-escape a:hover,
+[data-theme="light"] .map-escape a:focus-visible { color: #b8860b; }
+
+/* ---- Map frame ---- */
+
+.map-stage {
+    margin: 0 auto 3rem;
+}
+
+.map-frame {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    border: 4px solid #2b2b40;
+    border-radius: 8px;
+    box-shadow: 0 0 0 2px #8890b0, 0 10px 30px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    background: #58bae6;
+}
+
+#region-map {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ---- Terrain (soft town-map style) ---- */
+
+.island-halo {
+    fill: none;
+    stroke: #ddf3fb;
+    stroke-width: 7;
+    stroke-linejoin: round;
+}
+
+.island {
+    fill: #8bce55;
+    stroke: #3f7a32;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+}
+
+.land-muted {
+    fill: #7dbd52;
+    stroke: #3f7a32;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+}
+
+.terrain .meadow { fill: #9bd96a; }
+.terrain .forest { fill: #64ae46; }
+.terrain .tan-mid { fill: #d9a866; }
+.terrain .tan-light { fill: #ecca8a; }
+.terrain .tan-deep { fill: #c08c4e; }
+.terrain .cross { fill: #f4f4f4; }
+
+.terrain .pond {
+    fill: #bdeef6;
+    stroke: #f4feff;
+    stroke-width: 1.5;
+}
+
+/* ---- Overworld routes ---- */
+
+.route-casing {
+    fill: none;
+    stroke: #cf8a34;
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.route-fill {
+    fill: none;
+    stroke: #f4c164;
+    stroke-width: 5.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.route-dash {
+    fill: none;
+    stroke: #fbe6b0;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-dasharray: 1 7;
+    opacity: 0.9;
+}
+
+/* ---- Route-sign banner (shows hovered/focused location name) ---- */
+
+.map-banner {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 5;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    color: #f8f8f8;
+    background: #2b2b40;
+    border: 2px solid #8890b0;
+    border-radius: 3px;
+    padding: 7px 10px 6px;
+    pointer-events: none;
+    max-width: 70%;
+}
+
+.map-banner:empty { display: none; }
+
+/* ---- Nodes ---- */
+
+.map-node {
+    cursor: pointer;
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.12s ease;
+}
+.map-node:focus { outline: none; }
+
+.map-node .node-inner {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.12s ease;
+}
+
+.map-node:hover .node-inner,
+.map-node:focus .node-inner {
+    transform: scale(1.18);
+}
+
+.map-node .node-ring {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+}
+
+.map-node:hover .node-ring,
+.map-node:focus .node-ring {
+    opacity: 1;
+}
+
+.node-number {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    fill: #ffffff;
+    paint-order: stroke;
+    stroke: rgba(120, 24, 14, 0.55);
+    stroke-width: 0.6;
+    pointer-events: none;
+}
+
+.start-cue {
+    font-family: 'Press Start 2P', monospace;
+    fill: #e8342f;
+    paint-order: stroke;
+    stroke: #ffffff;
+    stroke-width: 2.5;
+    animation: cue-bounce 0.9s steps(2, jump-none) infinite;
+}
+
+@keyframes cue-bounce {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-4px); }
+}
+
+/* ---- Category legend ---- */
+
+.map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem auto 0;
+    max-width: 640px;
+}
+
+.map-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.5rem;
+    color: #b8c4d4;
+}
+
+[data-theme="light"] .map-legend li { color: #4a5a6a; }
+
+.legend-chip {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.legend-chip[data-category="life"]          { background: #f25a4a; }
+.legend-chip[data-category="project"]       { background: #4a3527; }
+.legend-chip[data-category="park"]          { background: #34b36b; }
+.legend-chip[data-category="hobby"]         { background: #ef9f27; }
+.legend-chip[data-category="neighbourhood"] { background: #e0734a; }
+.legend-chip[data-category="landmark"]      { background: #b5793c; }
+.legend-chip[data-category="contact"]       { background: #9b59c6; }
+
+/* Project legend chip reads as a little cave mouth */
+.legend-chip.legend-cave {
+    position: relative;
+    background: #9a8c7a;
+    overflow: hidden;
+}
+.legend-chip.legend-cave::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    bottom: 0;
+    height: 7px;
+    background: #33261b;
+    border-radius: 4px 4px 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .start-cue { animation: none; }
+}
+
+/* ---- Dialogue-box panel ---- */
+
+.location-panel {
+    position: absolute;
+    left: 3%;
+    right: 3%;
+    bottom: 4%;
+    z-index: 10;
+    max-height: 68%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background: #f8f8f8;
+    color: #303030;
+    border: 4px solid #2b2b40;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 2px #ffffff, inset 0 0 0 5px #a8b0d0;
+    padding: 20px 22px 18px;
+    font-family: 'Press Start 2P', monospace;
+}
+
+.location-panel h2 {
+    font-size: 0.72rem;
+    margin: 0 2rem 0.6rem 0;
+    line-height: 1.7;
+}
+
+.panel-meta {
+    font-size: 0.55rem;
+    color: #707070;
+    margin: 0 0 0.9rem;
+    text-transform: uppercase;
+}
+
+.panel-meta .panel-chip {
+    display: inline-block;
+    color: #f8f8f8;
+    background: #4a7afa;
+    border-radius: 3px;
+    padding: 3px 6px 2px;
+    margin-right: 8px;
+}
+
+.location-panel[data-category="life"] .panel-chip { background: #f25a4a; }
+.location-panel[data-category="project"] .panel-chip { background: #6b5844; }
+.location-panel[data-category="park"] .panel-chip { background: #2f9e5f; }
+.location-panel[data-category="hobby"] .panel-chip { background: #d98a1f; }
+.location-panel[data-category="neighbourhood"] .panel-chip { background: #cf5f38; }
+.location-panel[data-category="landmark"] .panel-chip { background: #a06a2e; }
+.location-panel[data-category="contact"] .panel-chip { background: #9b59c6; }
+
+.panel-body p {
+    font-size: 0.6rem;
+    line-height: 2;
+    margin: 0 0 0.9rem;
+}
+
+.panel-body .panel-blurb { font-size: 0.62rem; }
+
+.panel-body img {
+    display: block;
+    max-width: 100%;
+    border: 3px solid #2b2b40;
+    border-radius: 3px;
+    margin: 0.3rem 0 0.9rem;
+}
+
+.panel-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 0.4rem;
+}
+
+.panel-links a {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    color: #f8f8f8;
+    background: #2b2b40;
+    text-decoration: none;
+    border: 2px solid #2b2b40;
+    border-radius: 3px;
+    padding: 8px 10px 7px;
+}
+
+.panel-links a:hover,
+.panel-links a:focus-visible {
+    background: #4a7afa;
+    border-color: #1a3ab0;
+}
+
+.panel-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
+    line-height: 1;
+    color: #303030;
+    background: #e8e8e8;
+    border: 2px solid #2b2b40;
+    border-radius: 3px;
+    padding: 6px 7px;
+    cursor: pointer;
+}
+
+.panel-close:hover,
+.panel-close:focus-visible {
+    background: #f8d030;
+}
+
+.map-hint {
+    text-align: center;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    line-height: 1.9;
+    color: #8fa0b8;
+    margin-top: 1rem;
+}
+
+[data-theme="light"] .map-hint { color: #5a6a7a; }
+
+.map-hint kbd {
+    font-family: inherit;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    padding: 1px 4px;
+}
+
+/* ---- Plain list fallback ---- */
+
+.location-list {
+    max-width: 860px;
+    margin: 0 auto 4rem;
+}
+
+.location-list h2 {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+}
+
+.list-intro {
+    color: #8fa0b8;
+    margin-top: 0;
+}
+
+[data-theme="light"] .list-intro { color: #5a6a7a; }
+
+.location-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+[data-theme="light"] .location-card {
+    background: #ffffff;
+    border: 1px solid #d8e0e8;
+}
+
+.location-card h3 {
+    margin: 0 0 0.25rem;
+}
+
+.location-card .card-meta {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8fa0b8;
+    margin: 0 0 0.75rem;
+}
+
+[data-theme="light"] .location-card .card-meta { color: #5a6a7a; }
+
+.location-card .card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.location-card .card-links a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+[data-theme="light"] .location-card .card-links a { color: #0077cc; }
+
+.location-card .card-links a:hover { text-decoration: underline; }
+
+/* ---- Small screens ---- */
+
+@media (max-width: 640px) {
+    .map-page { padding: 0 0.25rem; }
+
+    .location-panel {
+        left: 2%;
+        right: 2%;
+        bottom: 2%;
+        max-height: 80%;
+        padding: 16px 14px 14px;
+    }
+
+    .location-panel h2 { font-size: 0.65rem; }
+    .panel-body p { font-size: 0.55rem; }
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore My Montreal — Shawn Yat Sin</title>
+    <meta name="description" content="An interactive, retro game-style map of the Island of Montreal. Click the locations to explore Shawn Yat Sin's journey, projects, and how to get in touch.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/map.css">
+    <script>
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img id='logo' src="./images/logo.png" alt="Shawn Yat Sin logo">
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./map.html" aria-current="page">Map</a></li>
+                <li><a href="./assets/Resume3-may2026.pdf" target="_blank" class='download-btn'>Resume</a></li>
+                <li><button class="theme-toggle" aria-label="Switch to light mode">☀️</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="map-page">
+        <section class="map-intro">
+            <h1 class="pixel-title">EXPLORE MY MONTRÉAL</h1>
+            <p class="map-tagline">A tiny overworld of my real island. Click a spot on the map to learn about me.</p>
+            <p class="map-escape">
+                <a href="#location-list">Not into maps? Skip to the plain list ▸</a>
+                <a href="./assets/Resume3-may2026.pdf" target="_blank">Or go straight to my résumé ▸</a>
+            </p>
+        </section>
+
+        <section class="map-stage" aria-label="Interactive map">
+            <div class="map-frame">
+                <div id="map-banner" class="map-banner" aria-hidden="true"></div>
+                <svg id="region-map" viewBox="0 0 480 360" role="group"
+                     aria-label="Stylized map of the Island of Montreal with clickable locations">
+                    <defs>
+                        <!-- Fine horizontal stripes, like the town-map water texture -->
+                        <pattern id="water-stripes" width="6" height="7" patternUnits="userSpaceOnUse">
+                            <rect width="6" height="7" fill="#58bae6"/>
+                            <rect width="6" height="2" y="1" fill="#6cc7f0"/>
+                        </pattern>
+                    </defs>
+                    <!-- Water -->
+                    <rect x="0" y="0" width="480" height="360" fill="url(#water-stripes)"/>
+
+                    <!-- Off-island land: Laval (top) and the South Shore (bottom right) -->
+                    <g aria-hidden="true">
+                        <path class="island-halo" d="M-8 -8 H488 V18 Q400 32 320 26 Q220 20 120 32 Q40 42 -8 28 Z"/>
+                        <path class="land-muted" d="M-8 -8 H488 V18 Q400 32 320 26 Q220 20 120 32 Q40 42 -8 28 Z"/>
+                        <path class="island-halo" d="M488 262 Q452 296 398 308 L488 344 Z"/>
+                        <path class="land-muted" d="M488 262 Q452 296 398 308 L488 344 Z"/>
+                    </g>
+
+                    <!-- Island of Montreal -->
+                    <path class="island-halo" d="M16 214 Q24 172 62 150 Q108 122 160 108 Q220 92 288 90
+                        Q356 90 414 110 Q452 130 470 172 Q460 206 414 226 Q356 250 292 260
+                        Q224 268 160 264 Q104 260 62 244 Q30 232 16 214 Z"/>
+                    <path class="island" d="M16 214 Q24 172 62 150 Q108 122 160 108 Q220 92 288 90
+                        Q356 90 414 110 Q452 130 470 172 Q460 206 414 226 Q356 250 292 260
+                        Q224 268 160 264 Q104 260 62 244 Q30 232 16 214 Z"/>
+
+                    <!-- River island (holds the Projects cave) -->
+                    <path class="island-halo" d="M268 314 Q274 301 300 300 Q328 301 332 315 Q328 330 298 331 Q270 329 268 314 Z"/>
+                    <path class="island" d="M268 314 Q274 301 300 300 Q328 301 332 315 Q328 330 298 331 Q270 329 268 314 Z"/>
+
+                    <!-- Terrain detail: light meadows, forests, the tan highlands, a pond -->
+                    <g class="terrain" aria-hidden="true">
+                        <ellipse class="meadow" cx="145" cy="182" rx="36" ry="14"/>
+                        <ellipse class="meadow" cx="100" cy="216" rx="26" ry="10"/>
+                        <ellipse class="meadow" cx="360" cy="168" rx="26" ry="11"/>
+                        <ellipse class="meadow" cx="234" cy="226" rx="30" ry="11"/>
+                        <ellipse class="forest" cx="86"  cy="166" rx="20" ry="9"/>
+                        <ellipse class="forest" cx="184" cy="140" rx="22" ry="10"/>
+                        <ellipse class="forest" cx="214" cy="212" rx="24" ry="11"/>
+                        <ellipse class="forest" cx="318" cy="204" rx="18" ry="8"/>
+                        <ellipse class="forest" cx="414" cy="150" rx="20" ry="9"/>
+                        <ellipse class="forest" cx="54"  cy="204" rx="14" ry="7"/>
+                        <ellipse class="forest" cx="166" cy="250" rx="18" ry="7"/>
+                        <g transform="rotate(-12 270 140)">
+                            <ellipse class="tan-mid"   cx="270" cy="140" rx="44" ry="19"/>
+                            <ellipse class="tan-mid"   cx="304" cy="130" rx="18" ry="10"/>
+                            <ellipse class="tan-light" cx="278" cy="134" rx="23" ry="8"/>
+                            <ellipse class="tan-deep"  cx="248" cy="148" rx="12" ry="6"/>
+                        </g>
+                        <rect class="cross" x="266" y="108" width="4" height="13"/>
+                        <rect class="cross" x="262" y="111" width="12" height="4"/>
+                        <ellipse class="pond" cx="100" cy="242" rx="8" ry="4"/>
+                    </g>
+
+                    <!-- Orange routes + location nodes rendered by js/map.js -->
+                    <g id="map-routes"></g>
+                    <g id="map-nodes"></g>
+                </svg>
+
+                <!-- Dialogue-box info panel -->
+                <div id="location-panel" class="location-panel" role="dialog" aria-modal="false"
+                     aria-labelledby="panel-title" hidden>
+                    <button id="panel-close" class="panel-close" aria-label="Close panel">✕</button>
+                    <h2 id="panel-title"></h2>
+                    <p id="panel-meta" class="panel-meta"></p>
+                    <div id="panel-body" class="panel-body"></div>
+                </div>
+            </div>
+            <p class="map-hint" aria-hidden="true">▶ Use a mouse, finger, or <kbd>Tab</kbd> + <kbd>Enter</kbd> to visit a location. <kbd>Esc</kbd> closes the box.</p>
+            <ul class="map-legend" aria-label="What the marker colours mean">
+                <li><span class="legend-chip" data-category="life"></span>Life journey</li>
+                <li><span class="legend-chip legend-cave" data-category="project"></span>Project</li>
+                <li><span class="legend-chip" data-category="park"></span>Park</li>
+                <li><span class="legend-chip" data-category="hobby"></span>Hobby</li>
+                <li><span class="legend-chip" data-category="neighbourhood"></span>Neighbourhood</li>
+                <li><span class="legend-chip" data-category="landmark"></span>Landmark</li>
+                <li><span class="legend-chip" data-category="contact"></span>Contact</li>
+            </ul>
+        </section>
+
+        <section id="location-list" class="location-list">
+            <h2 class="pixel-title">ALL LOCATIONS</h2>
+            <p class="list-intro">The same content as the map, as a plain list.</p>
+            <div id="location-list-items"></div>
+        </section>
+    </main>
+    <footer id="footer">
+        <p id="year"></p>
+        <ul class="footer-nav">
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./assets/Resume3-may2026.pdf" target="_blank">Resume</a></li>
+        </ul>
+        <ul id="social-links">
+            <li><a href="https://github.com/ShawnYS-codemtl" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/in/shawnyatsin" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+            <li><a href="mailto:shawnyatsin@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
+        </ul>
+    </footer>
+    <script src="./js/map.js" type="module" defer></script>
+</body>
+</html>
