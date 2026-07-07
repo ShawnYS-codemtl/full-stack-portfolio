@@ -287,6 +287,13 @@
     border-radius: 2px;
 }
 
+.legend-chip.legend-diamond {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    transform: rotate(45deg);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .start-cue { animation: none; }
 }

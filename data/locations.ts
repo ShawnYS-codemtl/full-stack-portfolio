@@ -41,7 +41,7 @@ export const locations: Location[] = [
         name: 'Sainte-Anne-de-Bellevue',
         neighbourhood: 'West Island',
         category: 'city',
-        coords: { x: 44, y: 206 },
+        coords: { x: 44, y: 220 },
         blurb: 'Western tip of the Island of Montreal.'
     },
     {
@@ -49,7 +49,7 @@ export const locations: Location[] = [
         name: 'Pointe-Claire',
         neighbourhood: 'West Island',
         category: 'city',
-        coords: { x: 92, y: 218 },
+        coords: { x: 150, y: 230 },
         blurb: 'West Island city along the south shore of the island.'
     },
     {
@@ -57,7 +57,7 @@ export const locations: Location[] = [
         name: 'Dollard-des-Ormeaux',
         neighbourhood: 'West Island',
         category: 'city',
-        coords: { x: 112, y: 178 },
+        coords: { x: 130, y: 180 },
         blurb: 'West Island city north of Pointe-Claire.'
     },
     {
@@ -65,7 +65,7 @@ export const locations: Location[] = [
         name: 'Roxboro',
         neighbourhood: 'Pierrefonds-Roxboro',
         category: 'city',
-        coords: { x: 152, y: 134 },
+        coords: { x: 152, y: 140 },
         blurb: 'North-shore neighbourhood along the Riviere des Prairies.'
     },
     {
@@ -73,7 +73,7 @@ export const locations: Location[] = [
         name: 'Lachine',
         neighbourhood: 'Southwest Montreal',
         category: 'city',
-        coords: { x: 168, y: 246 },
+        coords: { x: 240, y: 255 },
         blurb: 'Southwest borough along Lac Saint-Louis and the Lachine Canal.'
     },
     {
@@ -85,27 +85,11 @@ export const locations: Location[] = [
         blurb: 'North-central neighbourhood along the Riviere des Prairies.'
     },
     {
-        id: 'mile-end',
-        name: 'Mile End',
-        neighbourhood: 'Plateau-Mont-Royal',
-        category: 'city',
-        coords: { x: 300, y: 166 },
-        blurb: 'Creative neighbourhood just northeast of Mount Royal.'
-    },
-    {
-        id: 'little-italy',
-        name: 'Little Italy',
-        neighbourhood: 'Rosemont-La Petite-Patrie',
-        category: 'city',
-        coords: { x: 274, y: 158 },
-        blurb: 'North-central neighbourhood around Jean-Talon Market and Saint-Laurent.'
-    },
-    {
         id: 'plateau-mont-royal',
         name: 'Plateau-Mont-Royal',
         neighbourhood: 'Central Montreal',
         category: 'city',
-        coords: { x: 328, y: 184 },
+        coords: { x: 338, y: 176 },
         blurb: 'Dense central neighbourhood east of Mount Royal.'
     },
     {
@@ -113,23 +97,15 @@ export const locations: Location[] = [
         name: 'Ville-Marie',
         neighbourhood: 'Downtown Montreal',
         category: 'city',
-        coords: { x: 314, y: 218 },
+        coords: { x: 320, y: 232 },
         blurb: 'Downtown core south of Mount Royal.'
-    },
-    {
-        id: 'griffintown',
-        name: 'Griffintown',
-        neighbourhood: 'Southwest Montreal',
-        category: 'city',
-        coords: { x: 296, y: 238 },
-        blurb: 'Southwest neighbourhood near downtown and the canal.'
     },
     {
         id: 'dairy-queen',
         name: 'Dairy Queen',
         neighbourhood: 'Near Dollard-des-Ormeaux',
         category: 'job',
-        coords: { x: 118, y: 188 },
+        coords: { x: 155, y: 200 },
         blurb: 'Work location near DDO.'
     },
     {
@@ -145,7 +121,7 @@ export const locations: Location[] = [
         name: 'Camp Counselor',
         neighbourhood: 'Near Pointe-Claire',
         category: 'job',
-        coords: { x: 84, y: 226 },
+        coords: { x: 110, y: 247 },
         blurb: 'Camp counselor work location near Pointe-Claire.'
     },
     {
@@ -153,7 +129,7 @@ export const locations: Location[] = [
         name: 'Sansotei Ramen',
         neighbourhood: 'Near Ville-Marie',
         category: 'job',
-        coords: { x: 326, y: 228 },
+        coords: { x: 302, y: 230 },
         blurb: 'Server work location near Ville-Marie.'
     },
     {
@@ -161,7 +137,7 @@ export const locations: Location[] = [
         name: 'Dollarama',
         neighbourhood: 'Near Pointe-Claire',
         category: 'job',
-        coords: { x: 100, y: 226 },
+        coords: { x: 137, y: 228 },
         blurb: 'Work location near Pointe-Claire.'
     },
     {
@@ -169,7 +145,7 @@ export const locations: Location[] = [
         name: 'Primary School',
         neighbourhood: 'Near Roxboro',
         category: 'school',
-        coords: { x: 160, y: 142 },
+        coords: { x: 140, y: 154 },
         blurb: 'School location near Roxboro.'
     },
     {
@@ -177,7 +153,7 @@ export const locations: Location[] = [
         name: 'High School',
         neighbourhood: 'Near Lachine',
         category: 'school',
-        coords: { x: 176, y: 254 },
+        coords: { x: 218, y: 252 },
         blurb: 'School location near Lachine.'
     },
     {
@@ -185,7 +161,7 @@ export const locations: Location[] = [
         name: 'CEGEP',
         neighbourhood: 'Near Sainte-Anne-de-Bellevue',
         category: 'school',
-        coords: { x: 52, y: 214 },
+        coords: { x: 54, y: 230 },
         blurb: 'School location near Sainte-Anne-de-Bellevue.'
     },
     {
@@ -193,8 +169,56 @@ export const locations: Location[] = [
         name: 'McGill University',
         neighbourhood: 'Near Ville-Marie',
         category: 'school',
-        coords: { x: 324, y: 210 },
+        coords: { x: 318, y: 210 },
         blurb: 'University location near Ville-Marie.'
+    },
+    {
+        id: 'judo',
+        name: 'Judo',
+        neighbourhood: 'Near Ahuntsic',
+        category: 'hobby',
+        coords: { x: 225, y: 140 },
+        blurb: 'Judo dojo near Ahuntsic.'
+    },
+    {
+        id: 'dragon-boat',
+        name: 'Dragon Boat',
+        neighbourhood: 'Lachine Canal',
+        category: 'hobby',
+        coords: { x: 312, y: 273 },
+        blurb: 'Dragon boat paddling on the Lachine Canal.'
+    },
+    {
+        id: 'bouldering',
+        name: 'Bouldering',
+        neighbourhood: 'Near Pointe-Claire',
+        category: 'hobby',
+        coords: { x: 163, y: 220 },
+        blurb: 'Bouldering gym near Pointe-Claire.'
+    },
+    {
+        id: 'run-club',
+        name: 'Run Club',
+        neighbourhood: 'Near LaSalle',
+        category: 'hobby',
+        coords: { x: 348, y: 274 },
+        blurb: 'Run club route near LaSalle.'
+    },
+    {
+        id: 'thrifting',
+        name: 'Thrifting',
+        neighbourhood: 'Near DDO',
+        category: 'hobby',
+        coords: { x: 166, y: 207 },
+        blurb: 'Thrifting location near DDO.'
+    },
+    {
+        id: 'biking',
+        name: 'Biking',
+        neighbourhood: 'Near Pointe-Claire',
+        category: 'hobby',
+        coords: { x: 150, y: 255 },
+        blurb: 'Biking route near the water.'
     }
 ];
 

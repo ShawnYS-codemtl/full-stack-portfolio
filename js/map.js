@@ -106,6 +106,15 @@ function buildJobMarker(inner, color) {
     inner.appendChild(svgEl("circle", { cx: 9.125, cy: 9.125, r: 0.75, fill: color.light, opacity: 0.85 }));
 }
 
+// Small diamond hobby marker, centred at (10,10), matching job/school marker scale.
+function buildHobbyMarker(inner, color) {
+    const diamond = (cx, cy, r) => `${cx},${cy - r} ${cx + r},${cy} ${cx},${cy + r} ${cx - r},${cy}`;
+    inner.appendChild(svgEl("polygon", { points: diamond(10, 10, 3.375), fill: "#fbf3df" }));
+    inner.appendChild(svgEl("polygon", { points: diamond(10.25, 10.375, 2.375), fill: color.dark }));
+    inner.appendChild(svgEl("polygon", { points: diamond(10, 10, 2.375), fill: color.main, stroke: "rgba(40, 20, 10, 0.35)", "stroke-width": 0.625 }));
+    inner.appendChild(svgEl("circle", { cx: 9.125, cy: 9.125, r: 0.75, fill: color.light, opacity: 0.85 }));
+}
+
 // A dark cave-mouth marker for projects (stone face + arched entrance).
 function buildCave(inner) {
     inner.appendChild(svgEl("rect", { x: 1, y: 1, width: 18, height: 18, rx: 6, fill: "#fbf3df" }));
@@ -150,6 +159,8 @@ function buildNode(loc, banner, panel) {
         buildSchoolMarker(inner, color);
     } else if (loc.category === "job") {
         buildJobMarker(inner, color);
+    } else if (loc.category === "hobby") {
+        buildHobbyMarker(inner, color);
     } else {
         buildMarker(inner, color);
         if (loc.category === "life" && loc.order != null) {

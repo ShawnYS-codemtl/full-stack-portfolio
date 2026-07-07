@@ -140,7 +140,57 @@ export const locations = [
         category: 'school',
         coords: { x: 318, y: 210 },
         blurb: 'University location near Ville-Marie.'
-    }
+    },
+    {
+        id: 'judo',
+        name: 'Judo',
+        neighbourhood: 'Near Ahuntsic',
+        category: 'hobby',
+        coords: { x: 225, y: 140 },
+        blurb: 'Judo dojo near Ahuntsic.'
+    },
+    {
+        id: 'dragon-boat',
+        name: 'Dragon Boat',
+        neighbourhood: 'Lachine Canal',
+        category: 'hobby',
+        coords: { x: 312, y: 273 },
+        blurb: 'Dragon boat paddling on the Lachine Canal.'
+    },
+    {
+        id: 'bouldering',
+        name: 'Bouldering',
+        neighbourhood: 'Near Pointe-Claire',
+        category: 'hobby',
+        coords: { x: 163, y: 220 },
+        blurb: 'Bouldering gym near Pointe-Claire.'
+    },
+    {
+        id: 'run-club',
+        name: 'Run Club',
+        neighbourhood: 'Near LaSalle',
+        category: 'hobby',
+        coords: { x: 348, y: 274 },
+        blurb: 'Run club route near LaSalle.'
+    }, 
+    {
+        id: 'thrifting',
+        name: 'Thrifting',
+        neighbourhood: 'Near DDO',
+        category: 'hobby',
+        coords: { x: 166, y: 207 },
+        blurb: 'Thrifting location near DDO.'
+    }, 
+    {
+        id: 'biking',
+        name: 'Biking',
+        neighbourhood: 'Near Pointe-Claire',
+        category: 'hobby',
+        coords: { x: 150, y: 255 },
+        blurb: 'Biking route near the water.'
+    }, 
+    
+
 ];
 /*
 Previous location and route data is intentionally inactive while the city map is
