@@ -42,7 +42,7 @@ export const locations = [
         name: 'Lachine',
         neighbourhood: 'Southwest Montreal',
         category: 'city',
-        coords: { x: 226, y: 246 },
+        coords: { x: 240, y: 255 },
         blurb: 'Southwest borough along Lac Saint-Louis and the Lachine Canal.'
     },
     {
@@ -122,7 +122,7 @@ export const locations = [
         name: 'High School',
         neighbourhood: 'Near Lachine',
         category: 'school',
-        coords: { x: 218, y: 256 },
+        coords: { x: 218, y: 252 },
         blurb: 'School location near Lachine.'
     },
     {

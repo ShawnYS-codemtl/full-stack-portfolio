@@ -92,18 +92,18 @@ function buildMarker(inner, color) {
 
 // Small square school marker, centred at (10,10), matching job marker scale.
 function buildSchoolMarker(inner, color) {
-    inner.appendChild(svgEl("rect", { x: 7.3, y: 7.3, width: 5.4, height: 5.4, rx: 0.8, fill: "#fbf3df" }));
-    inner.appendChild(svgEl("rect", { x: 8.1, y: 8.4, width: 3.8, height: 3.8, rx: 0.5, fill: color.dark }));
-    inner.appendChild(svgEl("rect", { x: 8.1, y: 8.1, width: 3.8, height: 3.8, rx: 0.5, fill: color.main, stroke: "rgba(70, 50, 5, 0.45)", "stroke-width": 0.5 }));
-    inner.appendChild(svgEl("rect", { x: 8.7, y: 8.6, width: 1.5, height: 0.7, rx: 0.3, fill: color.light, opacity: 0.9 }));
+    inner.appendChild(svgEl("rect", { x: 6.625, y: 6.625, width: 6.75, height: 6.75, rx: 1, fill: "#fbf3df" }));
+    inner.appendChild(svgEl("rect", { x: 7.625, y: 8, width: 4.75, height: 4.75, rx: 0.625, fill: color.dark }));
+    inner.appendChild(svgEl("rect", { x: 7.625, y: 7.625, width: 4.75, height: 4.75, rx: 0.625, fill: color.main, stroke: "rgba(70, 50, 5, 0.45)", "stroke-width": 0.625 }));
+    inner.appendChild(svgEl("rect", { x: 8.375, y: 8.25, width: 1.875, height: 0.875, rx: 0.375, fill: color.light, opacity: 0.9 }));
 }
 
 // Small circular work marker, centred at (10,10), using the same focus target.
 function buildJobMarker(inner, color) {
-    inner.appendChild(svgEl("circle", { cx: 10, cy: 10, r: 2.7, fill: "#fbf3df" }));
-    inner.appendChild(svgEl("circle", { cx: 10.2, cy: 10.3, r: 1.9, fill: color.dark }));
-    inner.appendChild(svgEl("circle", { cx: 10, cy: 10, r: 1.9, fill: color.main, stroke: "rgba(20, 50, 25, 0.4)", "stroke-width": 0.5 }));
-    inner.appendChild(svgEl("circle", { cx: 9.3, cy: 9.3, r: 0.6, fill: color.light, opacity: 0.85 }));
+    inner.appendChild(svgEl("circle", { cx: 10, cy: 10, r: 3.375, fill: "#fbf3df" }));
+    inner.appendChild(svgEl("circle", { cx: 10.25, cy: 10.375, r: 2.375, fill: color.dark }));
+    inner.appendChild(svgEl("circle", { cx: 10, cy: 10, r: 2.375, fill: color.main, stroke: "rgba(20, 50, 25, 0.4)", "stroke-width": 0.625 }));
+    inner.appendChild(svgEl("circle", { cx: 9.125, cy: 9.125, r: 0.75, fill: color.light, opacity: 0.85 }));
 }
 
 // A dark cave-mouth marker for projects (stone face + arched entrance).
