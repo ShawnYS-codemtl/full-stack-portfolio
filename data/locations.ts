@@ -2,6 +2,9 @@
 // to regenerate data/locations.js (the file the browser actually loads).
 
 export type Category =
+    | 'city'
+    | 'job'
+    | 'school'
     | 'life'
     | 'project'
     | 'hobby'
@@ -27,283 +30,215 @@ export interface Location {
     links?: { label: string; href: string }[];
 }
 
-/** Orange overworld routes drawn between nodes (rendered under the markers). */
+/** Routes are disabled while rebuilding the map from accurate city positions. */
 export const routes: [string, string][] = [
-    ['cegep', 'home'],
-    ['home', 'bouldering'],
-    ['home', 'west-island-parks'],
-    ['home', 'primary-school'],
-    ['home', 'high-school'],
-    ['primary-school', 'judo'],
-    ['judo', 'mount-royal'],
-    ['high-school', 'dragon-boat'],
-    ['dragon-boat', 'peer-mentorship'],
-    ['peer-mentorship', 'mcgill'],
-    ['mount-royal', 'plateau'],
-    ['mount-royal', 'mcgill'],
-    ['mcgill', 'work'],
-    ['mcgill', 'mars-rover'],
-    ['mars-rover', 'sticker-ecommerce'],
-    ['sticker-ecommerce', 'contact'],
-    ['work', 'contact'],
-    ['mcgill', 'projects-portal'],
+    // Previous routes are intentionally commented out while city placement is rebuilt.
 ];
 
 export const locations: Location[] = [
-    // ---- Life journey (numbered red pins, 1–5) ----
     {
-        id: 'home',
-        name: 'Home',
+        id: 'sainte-anne-de-bellevue',
+        name: 'Sainte-Anne-de-Bellevue',
         neighbourhood: 'West Island',
-        category: 'life',
-        coords: { x: 92, y: 208 },
-        order: 1,
-        blurb: 'Where the journey starts — born and raised on the West Island of Montreal.',
-        body: [
-            'I grew up here on the west end of the island, fully bilingual in English and French. My parents moved to Montreal from the tropical island of Mauritius, which gave me a love for diversity and adventure.',
-            'I build projects my friends and I would actually want to use. This map is a tour of my Montreal — start here and wander east.'
-        ]
+        category: 'city',
+        coords: { x: 44, y: 206 },
+        blurb: 'Western tip of the Island of Montreal.'
+    },
+    {
+        id: 'pointe-claire',
+        name: 'Pointe-Claire',
+        neighbourhood: 'West Island',
+        category: 'city',
+        coords: { x: 92, y: 218 },
+        blurb: 'West Island city along the south shore of the island.'
+    },
+    {
+        id: 'dollard-des-ormeaux',
+        name: 'Dollard-des-Ormeaux',
+        neighbourhood: 'West Island',
+        category: 'city',
+        coords: { x: 112, y: 178 },
+        blurb: 'West Island city north of Pointe-Claire.'
+    },
+    {
+        id: 'roxboro',
+        name: 'Roxboro',
+        neighbourhood: 'Pierrefonds-Roxboro',
+        category: 'city',
+        coords: { x: 152, y: 134 },
+        blurb: 'North-shore neighbourhood along the Riviere des Prairies.'
+    },
+    {
+        id: 'lachine',
+        name: 'Lachine',
+        neighbourhood: 'Southwest Montreal',
+        category: 'city',
+        coords: { x: 168, y: 246 },
+        blurb: 'Southwest borough along Lac Saint-Louis and the Lachine Canal.'
+    },
+    {
+        id: 'ahuntsic',
+        name: 'Ahuntsic',
+        neighbourhood: 'North Montreal',
+        category: 'city',
+        coords: { x: 236, y: 126 },
+        blurb: 'North-central neighbourhood along the Riviere des Prairies.'
+    },
+    {
+        id: 'mile-end',
+        name: 'Mile End',
+        neighbourhood: 'Plateau-Mont-Royal',
+        category: 'city',
+        coords: { x: 300, y: 166 },
+        blurb: 'Creative neighbourhood just northeast of Mount Royal.'
+    },
+    {
+        id: 'little-italy',
+        name: 'Little Italy',
+        neighbourhood: 'Rosemont-La Petite-Patrie',
+        category: 'city',
+        coords: { x: 274, y: 158 },
+        blurb: 'North-central neighbourhood around Jean-Talon Market and Saint-Laurent.'
+    },
+    {
+        id: 'plateau-mont-royal',
+        name: 'Plateau-Mont-Royal',
+        neighbourhood: 'Central Montreal',
+        category: 'city',
+        coords: { x: 328, y: 184 },
+        blurb: 'Dense central neighbourhood east of Mount Royal.'
+    },
+    {
+        id: 'ville-marie',
+        name: 'Ville-Marie',
+        neighbourhood: 'Downtown Montreal',
+        category: 'city',
+        coords: { x: 314, y: 218 },
+        blurb: 'Downtown core south of Mount Royal.'
+    },
+    {
+        id: 'griffintown',
+        name: 'Griffintown',
+        neighbourhood: 'Southwest Montreal',
+        category: 'city',
+        coords: { x: 296, y: 238 },
+        blurb: 'Southwest neighbourhood near downtown and the canal.'
+    },
+    {
+        id: 'dairy-queen',
+        name: 'Dairy Queen',
+        neighbourhood: 'Near Dollard-des-Ormeaux',
+        category: 'job',
+        coords: { x: 118, y: 188 },
+        blurb: 'Work location near DDO.'
+    },
+    {
+        id: 'sushi-ya-matcha',
+        name: 'Sushi Ya Matcha',
+        neighbourhood: 'Near Dollard-des-Ormeaux',
+        category: 'job',
+        coords: { x: 104, y: 188 },
+        blurb: 'Sushi chef work location near DDO.'
+    },
+    {
+        id: 'camp-counselor',
+        name: 'Camp Counselor',
+        neighbourhood: 'Near Pointe-Claire',
+        category: 'job',
+        coords: { x: 84, y: 226 },
+        blurb: 'Camp counselor work location near Pointe-Claire.'
+    },
+    {
+        id: 'sansotei-ramen',
+        name: 'Sansotei Ramen',
+        neighbourhood: 'Near Ville-Marie',
+        category: 'job',
+        coords: { x: 326, y: 228 },
+        blurb: 'Server work location near Ville-Marie.'
+    },
+    {
+        id: 'dollarama',
+        name: 'Dollarama',
+        neighbourhood: 'Near Pointe-Claire',
+        category: 'job',
+        coords: { x: 100, y: 226 },
+        blurb: 'Work location near Pointe-Claire.'
     },
     {
         id: 'primary-school',
         name: 'Primary School',
-        neighbourhood: 'Roxboro',
-        category: 'life',
-        coords: { x: 152, y: 132 },
-        order: 2,
-        blurb: 'The early years — grade school in the Roxboro neighbourhood.',
-        body: [
-            'Roxboro sits on the north shore of the island, along the Rivière des Prairies. This is where my school days started.'
-        ]
+        neighbourhood: 'Near Roxboro',
+        category: 'school',
+        coords: { x: 160, y: 142 },
+        blurb: 'School location near Roxboro.'
     },
     {
         id: 'high-school',
         name: 'High School',
-        neighbourhood: 'Lachine',
-        category: 'life',
-        coords: { x: 168, y: 246 },
-        order: 3,
-        blurb: 'The high-school years, down on the south-west shore in Lachine.',
-        body: [
-            'Lachine hugs the shore of Lac Saint-Louis in the island\'s south-west. This stretch marks my high-school years.'
-        ]
+        neighbourhood: 'Near Lachine',
+        category: 'school',
+        coords: { x: 176, y: 254 },
+        blurb: 'School location near Lachine.'
     },
     {
         id: 'cegep',
         name: 'CEGEP',
-        neighbourhood: 'Ste-Anne-de-Bellevue',
-        category: 'life',
-        coords: { x: 42, y: 206 },
-        order: 4,
-        blurb: 'Pre-university CEGEP at the western tip of the island.',
-        body: [
-            'Sainte-Anne-de-Bellevue sits right at the western tip, where the Ottawa and St. Lawrence rivers meet. My CEGEP years — the last stop before McGill.'
-        ]
+        neighbourhood: 'Near Sainte-Anne-de-Bellevue',
+        category: 'school',
+        coords: { x: 52, y: 214 },
+        blurb: 'School location near Sainte-Anne-de-Bellevue.'
     },
     {
         id: 'mcgill',
         name: 'McGill University',
-        neighbourhood: 'Downtown',
-        category: 'life',
-        coords: { x: 286, y: 188 },
-        order: 5,
-        blurb: 'B.Eng. Software Engineering — 3.71 GPA, at the foot of Mount Royal.',
-        body: [
-            'I studied Software Engineering at McGill (2021–2025), graduating with a 3.71 GPA. Coursework spanned algorithms, databases, operating systems, concurrency, and the full software-delivery lifecycle.',
-            'Outside class: McGame Jam (48-hour hackathon) and competitive programming with NP Compete.'
-        ],
-        links: [
-            { label: 'More about me', href: 'about.html' }
-        ]
-    },
-
-    // ---- Parks & nature (green) ----
-    {
-        id: 'west-island-parks',
-        name: 'Lakeshore Parks',
-        neighbourhood: 'West Island',
-        category: 'park',
-        coords: { x: 74, y: 238 },
-        order: 6,
-        blurb: 'The lakeshore parks near home — my go-to for running, biking and skating.',
-        body: [
-            'When the sun\'s out, this is where I am: running, biking, or skateboarding along the West Island lakeshore.',
-            'Volleyball and pickleball happen out here too — the parks near home are the backdrop for most of my outdoor time.'
-        ]
-    },
-    {
-        id: 'mount-royal',
-        name: 'Mount Royal',
-        neighbourhood: 'The Mountain',
-        category: 'park',
-        coords: { x: 256, y: 140 },
-        order: 7,
-        blurb: 'The green heart of the island — and my reset button.',
-        body: [
-            'The best seat in the city. When I\'m not coding you\'ll find me running or biking the trails here.',
-            'It\'s where I go to reset after a long build.'
-        ]
-    },
-
-    // ---- Neighbourhood (coral) ----
-    {
-        id: 'plateau',
-        name: 'The Plateau',
-        neighbourhood: 'Downtown',
-        category: 'neighbourhood',
-        coords: { x: 322, y: 126 },
-        order: 8,
-        blurb: 'Where I go to try new restaurants and soak up the city.',
-        body: [
-            'The Plateau and downtown are my spot for trying a new restaurant, grabbing a book, or just enjoying Montreal\'s energy between projects.'
-        ]
-    },
-
-    // ---- Hobbies with a fixed home (amber) ----
-    {
-        id: 'judo',
-        name: 'Judo Dojo',
-        neighbourhood: 'Ahuntsic',
-        category: 'hobby',
-        coords: { x: 206, y: 120 },
-        order: 9,
-        blurb: 'Brown belt in Judo — 15+ years of training.',
-        body: [
-            'Judo taught me discipline, perseverance, and how to stay calm under pressure — the same things that show up when I\'m debugging at 2am.',
-            'Fifteen-plus years of continuous training got me to brown belt, and the mindset carries into everything else I do.'
-        ]
-    },
-    {
-        id: 'bouldering',
-        name: 'Bouldering & Gym',
-        neighbourhood: 'West Island',
-        category: 'hobby',
-        coords: { x: 116, y: 190 },
-        order: 10,
-        blurb: 'Problem-solving with your whole body — my current obsession.',
-        body: [
-            'Climbing is what I\'m hooked on right now. Sending a V5 is one of my 2026 goals.',
-            'The gym keeps me in shape for it — strength work between sessions on the wall.'
-        ]
-    },
-    {
-        id: 'dragon-boat',
-        name: 'Dragon Boat',
-        neighbourhood: 'Lachine Canal',
-        category: 'hobby',
-        coords: { x: 214, y: 250 },
-        order: 11,
-        blurb: 'Two seasons paddling with McGill\'s dragon boat team.',
-        body: [
-            'I trained and raced two seasons on McGill\'s dragon boat team along the Lachine Canal — on-water synchronization, conditioning, and a great crew.'
-        ]
-    },
-
-    // ---- Landmark (bronze) ----
-    {
-        id: 'work',
-        name: 'Off the Keyboard',
-        neighbourhood: 'Work & leadership',
-        category: 'landmark',
-        coords: { x: 346, y: 206 },
-        order: 12,
-        blurb: 'The jobs and roles that taught me to perform under pressure and lead a team.',
-        body: [
-            'Serving at Sansotei Ramen and prepping at a sushi kitchen drilled speed, precision, and grace under fire. As an AI Language Contributor at Cheil Canada I reviewed 200+ French AI outputs for accuracy.',
-            'On the leadership side: Webmaster for the McGill Nursing Undergrad Society, VP Internal for the Hong Kong Student Network, and a summer leading groups of 20+ kids at Pointe-Claire Day Camps.'
-        ],
-        links: [
-            { label: 'Full work history', href: 'about.html' }
-        ]
-    },
-
-    // ---- Projects (dark cave-mouths) ----
-    {
-        id: 'peer-mentorship',
-        name: 'Peer Mentorship Platform',
-        neighbourhood: 'McGill Nursing',
-        category: 'project',
-        coords: { x: 242, y: 214 },
-        order: 13,
-        blurb: 'Algorithmic matching tool that pairs 200+ mentors and mentees in seconds.',
-        body: [
-            'Reduced mentor–mentee assignment from hours to seconds using a min-cost max-flow algorithm with multi-factor scoring (0–100).',
-            'Full-stack: Python/Flask backend, React/TypeScript admin dashboard with live score previews and manual overrides, a two-step CSV import pipeline, and Supabase PostgreSQL. Deployed on Vercel + Render.'
-        ],
-        images: ['images/mentorship.png'],
-        links: [
-            { label: 'Live site', href: 'https://nursing-mentorship-matcher.vercel.app/' },
-            { label: 'GitHub', href: 'https://github.com/ShawnYS-codemtl/nursing-mentorship-matcher' }
-        ]
-    },
-    {
-        id: 'mars-rover',
-        name: 'Mars Rover Simulator',
-        neighbourhood: 'Capstone',
-        category: 'project',
-        coords: { x: 366, y: 122 },
-        order: 14,
-        blurb: 'Capstone simulator using real NASA terrain data and pathfinding algorithms.',
-        body: [
-            'Built with an Agile team of 7 (coordinated in Jira): simulates Mars rover missions over real NASA HRSC MOLA elevation data parsed with Rasterio.',
-            'Implements A*, BFS, and DFS pathfinding with configurable heuristics, and logs distance, energy, and duration to SQLite. Packaged for desktop with PyInstaller.'
-        ],
-        images: ['images/mars-rover.png'],
-        links: [
-            { label: 'GitHub', href: 'https://github.com/ShawnYS-codemtl/mars-rover-simulator' }
-        ]
-    },
-    {
-        id: 'sticker-ecommerce',
-        name: 'Sticker E-Commerce Platform',
-        neighbourhood: 'Production app',
-        category: 'project',
-        coords: { x: 408, y: 172 },
-        order: 15,
-        blurb: 'Full-stack e-commerce platform built end-to-end for a real sticker business.',
-        body: [
-            'Next.js + TypeScript storefront with a Supabase backend: Stripe checkout with webhook-driven order processing, role-based admin access via Supabase RLS, and automated customer emails across the full order lifecycle.',
-            'It took the business from Instagram DMs and in-person meetups to online payments and national shipping across Canada.'
-        ],
-        images: ['images/momentong.png'],
-        links: [
-            { label: 'Live site', href: 'https://momentong.vercel.app/' },
-            { label: 'GitHub', href: 'https://github.com/ShawnYS-codemtl/momentong2.1' }
-        ]
-    },
-    {
-        id: 'projects-portal',
-        name: 'Project Gallery',
-        neighbourhood: 'The whole collection',
-        category: 'project',
-        coords: { x: 300, y: 316 },
-        order: 16,
-        blurb: 'The map pins my favourites — this cave opens the whole gallery.',
-        body: [
-            'Beyond what\'s pinned on the island: Smartly Goals (AI SMART-goal builder), Checkers Type Games (minimax AI), Anime Tracker (SwiftUI iOS), Chef Claude (recipe generator), and a vanilla-JS Productivity Dashboard.',
-            'Two more are in progress: a Spotify music-taste dashboard and Mutual, a dating app for mutuals.'
-        ],
-        links: [
-            { label: 'Browse all projects', href: 'projects.html' }
-        ]
-    },
-
-    // ---- Contact (purple — the eastern endpoint) ----
-    {
-        id: 'contact',
-        name: 'Say Hello',
-        neighbourhood: 'Get in touch',
-        category: 'contact',
-        coords: { x: 446, y: 166 },
-        order: 17,
-        blurb: 'You reached the east end. I\'m actively looking for full-stack roles — let\'s talk.',
-        body: [
-            'The fastest way to reach me is email, but I\'m on LinkedIn and GitHub too. I\'d love to hear about what you\'re building.'
-        ],
-        links: [
-            { label: 'Email me', href: 'mailto:shawnyatsin@gmail.com' },
-            { label: 'LinkedIn', href: 'https://linkedin.com/in/shawnyatsin' },
-            { label: 'GitHub', href: 'https://github.com/ShawnYS-codemtl' }
-        ]
+        neighbourhood: 'Near Ville-Marie',
+        category: 'school',
+        coords: { x: 324, y: 210 },
+        blurb: 'University location near Ville-Marie.'
     }
 ];
+
+/*
+Previous location and route data is intentionally inactive while the city map is
+rebuilt from scratch. Restore from git history if you want to bring back the
+biography, hobby, project, and contact nodes:
+
+routes:
+- cegep -> home
+- home -> bouldering
+- home -> west-island-parks
+- home -> primary-school
+- home -> high-school
+- primary-school -> judo
+- judo -> mount-royal
+- high-school -> dragon-boat
+- dragon-boat -> peer-mentorship
+- peer-mentorship -> mcgill
+- mount-royal -> plateau
+- mount-royal -> mcgill
+- mcgill -> work
+- mcgill -> mars-rover
+- mars-rover -> sticker-ecommerce
+- sticker-ecommerce -> contact
+- work -> contact
+- mcgill -> projects-portal
+
+locations:
+- home
+- primary-school
+- high-school
+- cegep
+- mcgill
+- west-island-parks
+- mount-royal
+- plateau
+- judo
+- bouldering
+- dragon-boat
+- work
+- peer-mentorship
+- mars-rover
+- sticker-ecommerce
+- projects-portal
+- contact
+*/

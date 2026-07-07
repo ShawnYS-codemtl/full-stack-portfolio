@@ -249,7 +249,10 @@
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
 }
 
+.legend-chip[data-category="city"],
 .legend-chip[data-category="life"]          { background: #f25a4a; }
+.legend-chip[data-category="job"]           { background: #34b36b; }
+.legend-chip[data-category="school"]        { background: #f8d030; }
 .legend-chip[data-category="project"]       { background: #4a3527; }
 .legend-chip[data-category="park"]          { background: #34b36b; }
 .legend-chip[data-category="hobby"]         { background: #ef9f27; }
@@ -272,6 +275,16 @@
     height: 7px;
     background: #33261b;
     border-radius: 4px 4px 0 0;
+}
+
+.legend-chip.legend-circle {
+    border-radius: 50%;
+}
+
+.legend-chip.legend-small-square {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

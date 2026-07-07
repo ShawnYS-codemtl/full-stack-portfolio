@@ -63,13 +63,25 @@
                         <path class="land-muted" d="M488 262 Q452 296 398 308 L488 344 Z"/>
                     </g>
 
-                    <!-- Island of Montreal -->
-                    <path class="island-halo" d="M16 214 Q24 172 62 150 Q108 122 160 108 Q220 92 288 90
-                        Q356 90 414 110 Q452 130 470 172 Q460 206 414 226 Q356 250 292 260
-                        Q224 268 160 264 Q104 260 62 244 Q30 232 16 214 Z"/>
-                    <path class="island" d="M16 214 Q24 172 62 150 Q108 122 160 108 Q220 92 288 90
-                        Q356 90 414 110 Q452 130 470 172 Q460 206 414 226 Q356 250 292 260
-                        Q224 268 160 264 Q104 260 62 244 Q30 232 16 214 Z"/>
+                    <!-- Island of Montreal: angular boot-like island silhouette with west-end toe and taller east body -->
+                    <path class="island-halo" d="M15 220
+                        L10 205 L18 190 L31 188 L39 177 L53 170 L60 154 L76 146
+                        L94 155 L113 146 L132 132 L152 125 L170 130 L185 117 L205 111
+                        L225 116 L244 108 L263 110 L281 102 L298 85 L318 75 L337 70
+                        L353 62 L376 65 L393 57 L416 61 L436 55 L461 58 L474 65
+                        L466 82 L452 96 L445 120 L430 139 L448 151 L466 160 L452 176
+                        L430 188 L414 210 L389 221 L371 241 L344 252 L329 273 L307 282
+                        L287 300 L263 292 L247 270 L224 264 L204 252 L183 263 L164 250
+                        L146 257 L130 244 L111 250 L91 244 L73 252 L55 241 L38 229 L25 221 Z"/>
+                    <path class="island" d="M15 220
+                        L10 205 L18 190 L31 188 L39 177 L53 170 L60 154 L76 146
+                        L94 155 L113 146 L132 132 L152 125 L170 130 L185 117 L205 111
+                        L225 116 L244 108 L263 110 L281 102 L298 85 L318 75 L337 70
+                        L353 62 L376 65 L393 57 L416 61 L436 55 L461 58 L474 65
+                        L466 82 L452 96 L445 120 L430 139 L448 151 L466 160 L452 176
+                        L430 188 L414 210 L389 221 L371 241 L344 252 L329 273 L307 282
+                        L287 300 L263 292 L247 270 L224 264 L204 252 L183 263 L164 250
+                        L146 257 L130 244 L111 250 L91 244 L73 252 L55 241 L38 229 L25 221 Z"/>
 
                     <!-- River island (holds the Projects cave) -->
                     <path class="island-halo" d="M268 314 Q274 301 300 300 Q328 301 332 315 Q328 330 298 331 Q270 329 268 314 Z"/>
@@ -88,15 +100,15 @@
                         <ellipse class="forest" cx="414" cy="150" rx="20" ry="9"/>
                         <ellipse class="forest" cx="54"  cy="204" rx="14" ry="7"/>
                         <ellipse class="forest" cx="166" cy="250" rx="18" ry="7"/>
-                        <g transform="rotate(-12 270 140)">
-                            <ellipse class="tan-mid"   cx="270" cy="140" rx="44" ry="19"/>
-                            <ellipse class="tan-mid"   cx="304" cy="130" rx="18" ry="10"/>
-                            <ellipse class="tan-light" cx="278" cy="134" rx="23" ry="8"/>
-                            <ellipse class="tan-deep"  cx="248" cy="148" rx="12" ry="6"/>
+                        <g transform="rotate(-12 278 202)">
+                            <ellipse class="tan-mid"   cx="278" cy="202" rx="34" ry="15"/>
+                            <ellipse class="tan-mid"   cx="304" cy="194" rx="14" ry="8"/>
+                            <ellipse class="tan-light" cx="284" cy="197" rx="18" ry="6"/>
+                            <ellipse class="tan-deep"  cx="260" cy="208" rx="9" ry="5"/>
                         </g>
-                        <rect class="cross" x="266" y="108" width="4" height="13"/>
-                        <rect class="cross" x="262" y="111" width="12" height="4"/>
-                        <ellipse class="pond" cx="100" cy="242" rx="8" ry="4"/>
+                        <rect class="cross" x="276" y="178" width="4" height="13"/>
+                        <rect class="cross" x="272" y="181" width="12" height="4"/>
+                        <ellipse class="pond" cx="147" cy="185" rx="6" ry="3"/>
                     </g>
 
                     <!-- Orange routes + location nodes rendered by js/map.js -->
@@ -115,13 +127,9 @@
             </div>
             <p class="map-hint" aria-hidden="true">▶ Use a mouse, finger, or <kbd>Tab</kbd> + <kbd>Enter</kbd> to visit a location. <kbd>Esc</kbd> closes the box.</p>
             <ul class="map-legend" aria-label="What the marker colours mean">
-                <li><span class="legend-chip" data-category="life"></span>Life journey</li>
-                <li><span class="legend-chip legend-cave" data-category="project"></span>Project</li>
-                <li><span class="legend-chip" data-category="park"></span>Park</li>
-                <li><span class="legend-chip" data-category="hobby"></span>Hobby</li>
-                <li><span class="legend-chip" data-category="neighbourhood"></span>Neighbourhood</li>
-                <li><span class="legend-chip" data-category="landmark"></span>Landmark</li>
-                <li><span class="legend-chip" data-category="contact"></span>Contact</li>
+                <li><span class="legend-chip" data-category="city"></span>City</li>
+                <li><span class="legend-chip legend-circle" data-category="job"></span>Job</li>
+                <li><span class="legend-chip legend-small-square" data-category="school"></span>School</li>
             </ul>
         </section>
 

@@ -9,6 +9,9 @@ const SVG_NS = "http://www.w3.org/2000/svg";
 // main = marker face, dark = bevel shadow, light = top highlight.
 // Colour encodes the category, so the map scales as nodes are added.
 const CATEGORY_COLORS = {
+    city:          { main: "#f25a4a", dark: "#b23425", light: "#ff9584" },
+    job:           { main: "#34b36b", dark: "#1f7a47", light: "#74d99f" },
+    school:        { main: "#f8d030", dark: "#b38a10", light: "#ffe98a" },
     life:          { main: "#f25a4a", dark: "#b23425", light: "#ff9584" },
     park:          { main: "#34b36b", dark: "#1f7a47", light: "#74d99f" },
     hobby:         { main: "#ef9f27", dark: "#a86d10", light: "#ffca7a" },
@@ -87,6 +90,22 @@ function buildMarker(inner, color) {
     inner.appendChild(svgEl("rect", { x: 5, y: 4.5, width: 6, height: 2.5, rx: 1.5, fill: color.light, opacity: 0.85 }));
 }
 
+// Small square school marker, centred at (10,10), matching job marker scale.
+function buildSchoolMarker(inner, color) {
+    inner.appendChild(svgEl("rect", { x: 7.3, y: 7.3, width: 5.4, height: 5.4, rx: 0.8, fill: "#fbf3df" }));
+    inner.appendChild(svgEl("rect", { x: 8.1, y: 8.4, width: 3.8, height: 3.8, rx: 0.5, fill: color.dark }));
+    inner.appendChild(svgEl("rect", { x: 8.1, y: 8.1, width: 3.8, height: 3.8, rx: 0.5, fill: color.main, stroke: "rgba(70, 50, 5, 0.45)", "stroke-width": 0.5 }));
+    inner.appendChild(svgEl("rect", { x: 8.7, y: 8.6, width: 1.5, height: 0.7, rx: 0.3, fill: color.light, opacity: 0.9 }));
+}
+
+// Small circular work marker, centred at (10,10), using the same focus target.
+function buildJobMarker(inner, color) {
+    inner.appendChild(svgEl("circle", { cx: 10, cy: 10, r: 2.7, fill: "#fbf3df" }));
+    inner.appendChild(svgEl("circle", { cx: 10.2, cy: 10.3, r: 1.9, fill: color.dark }));
+    inner.appendChild(svgEl("circle", { cx: 10, cy: 10, r: 1.9, fill: color.main, stroke: "rgba(20, 50, 25, 0.4)", "stroke-width": 0.5 }));
+    inner.appendChild(svgEl("circle", { cx: 9.3, cy: 9.3, r: 0.6, fill: color.light, opacity: 0.85 }));
+}
+
 // A dark cave-mouth marker for projects (stone face + arched entrance).
 function buildCave(inner) {
     inner.appendChild(svgEl("rect", { x: 1, y: 1, width: 18, height: 18, rx: 6, fill: "#fbf3df" }));
@@ -127,6 +146,10 @@ function buildNode(loc, banner, panel) {
     const inner = svgEl("g", { class: "node-inner" });
     if (loc.category === "project") {
         buildCave(inner);
+    } else if (loc.category === "school") {
+        buildSchoolMarker(inner, color);
+    } else if (loc.category === "job") {
+        buildJobMarker(inner, color);
     } else {
         buildMarker(inner, color);
         if (loc.category === "life" && loc.order != null) {
