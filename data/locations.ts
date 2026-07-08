@@ -69,6 +69,14 @@ export const locations: Location[] = [
         blurb: 'North-shore neighbourhood along the Riviere des Prairies.'
     },
     {
+        id: 'pierrefonds',
+        name: 'Pierrefonds',
+        neighbourhood: 'Pierrefonds',
+        category: 'city',
+        coords: { x: 85, y: 168 },
+        blurb: 'North-shore neighbourhood along the Riviere des Prairies.'
+    },
+    {
         id: 'lachine',
         name: 'Lachine',
         neighbourhood: 'Southwest Montreal',

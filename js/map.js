@@ -21,6 +21,21 @@ const CATEGORY_COLORS = {
     project:       { main: "#7a6650", dark: "#4a3527", light: "#b9a689" },
 };
 
+// Display order for the plain-list fallback, matching the legend's order.
+// Any category not listed here (shouldn't normally happen) sorts last.
+const LIST_CATEGORY_ORDER = [
+    "city", "job", "school", "hobby",
+    "life", "park", "project", "neighbourhood", "landmark", "contact",
+];
+
+// Legend chip shape class per category, matching each marker's real shape.
+const LEGEND_SHAPE_CLASS = {
+    job: "legend-circle",
+    school: "legend-small-square",
+    hobby: "legend-diamond",
+    project: "legend-cave",
+};
+
 const nodeById = new Map();
 const locById = new Map(locations.map((l) => [l.id, l]));
 let openedFromNode = null;
@@ -31,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const banner = document.getElementById("map-banner");
     const panel = document.getElementById("location-panel");
     const listContainer = document.getElementById("location-list-items");
+    const listFilters = document.getElementById("location-list-filters");
     const svg = document.getElementById("region-map");
 
     drawRoutes(routesLayer);
@@ -39,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         nodeById.set(loc.id, node);
         nodesLayer.appendChild(node);
     });
-    renderList(listContainer);
+    renderList(listContainer, listFilters);
 
     document.getElementById("panel-close").addEventListener("click", () => closePanel(panel));
 
@@ -281,48 +297,119 @@ function closePanel(panel) {
     }
 }
 
-function renderList(container) {
-    const sorted = [...locations].sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
-    sorted.forEach((loc) => {
-        const card = document.createElement("article");
-        card.className = "location-card";
-        card.id = `card-${loc.id}`;
+function buildLocationCard(loc) {
+    const card = document.createElement("article");
+    card.className = "location-card";
+    card.id = `card-${loc.id}`;
 
-        const h3 = document.createElement("h3");
-        h3.textContent = loc.name;
-        card.appendChild(h3);
+    const h4 = document.createElement("h4");
+    h4.textContent = loc.name;
+    card.appendChild(h4);
 
-        const meta = document.createElement("p");
-        meta.className = "card-meta";
-        meta.textContent = `${loc.neighbourhood} · ${loc.category}`;
-        card.appendChild(meta);
+    const meta = document.createElement("p");
+    meta.className = "card-meta";
+    meta.textContent = `${loc.neighbourhood} · ${loc.category}`;
+    card.appendChild(meta);
 
-        const blurb = document.createElement("p");
-        blurb.textContent = loc.blurb;
-        card.appendChild(blurb);
+    const blurb = document.createElement("p");
+    blurb.textContent = loc.blurb;
+    card.appendChild(blurb);
 
-        (loc.body || []).forEach((text) => {
-            const p = document.createElement("p");
-            p.textContent = text;
-            card.appendChild(p);
+    (loc.body || []).forEach((text) => {
+        const p = document.createElement("p");
+        p.textContent = text;
+        card.appendChild(p);
+    });
+
+    if (loc.links && loc.links.length) {
+        const links = document.createElement("div");
+        links.className = "card-links";
+        loc.links.forEach(({ label, href }) => {
+            const a = document.createElement("a");
+            a.href = href;
+            a.textContent = `${label} →`;
+            if (href.startsWith("http") || href.startsWith("mailto:")) {
+                a.rel = "noopener";
+                if (href.startsWith("http")) a.target = "_blank";
+            }
+            links.appendChild(a);
+        });
+        card.appendChild(links);
+    }
+
+    return card;
+}
+
+// Renders the plain-list fallback, grouped by category, with a filter bar that
+// narrows the list down to a single category ("All" restores every group).
+function renderList(container, filtersContainer) {
+    const byCategory = new Map();
+    locations.forEach((loc) => {
+        if (!byCategory.has(loc.category)) byCategory.set(loc.category, []);
+        byCategory.get(loc.category).push(loc);
+    });
+
+    const categories = [...byCategory.keys()].sort((a, b) => {
+        const ai = LIST_CATEGORY_ORDER.indexOf(a);
+        const bi = LIST_CATEGORY_ORDER.indexOf(b);
+        return (ai === -1 ? LIST_CATEGORY_ORDER.length : ai) - (bi === -1 ? LIST_CATEGORY_ORDER.length : bi);
+    });
+
+    let activeFilter = "all";
+
+    function renderItems() {
+        container.innerHTML = "";
+        categories
+            .filter((category) => activeFilter === "all" || activeFilter === category)
+            .forEach((category) => {
+                const heading = document.createElement("h3");
+                heading.className = "list-category-heading";
+
+                const chip = document.createElement("span");
+                chip.className = `legend-chip ${LEGEND_SHAPE_CLASS[category] || ""}`.trim();
+                chip.dataset.category = category;
+                chip.setAttribute("aria-hidden", "true");
+                heading.appendChild(chip);
+
+                heading.appendChild(document.createTextNode(category.charAt(0).toUpperCase() + category.slice(1)));
+                container.appendChild(heading);
+
+                const sorted = [...byCategory.get(category)].sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+                sorted.forEach((loc) => container.appendChild(buildLocationCard(loc)));
+            });
+    }
+
+    function buildFilterButton(value, label) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "list-filter-btn";
+        btn.dataset.filter = value;
+        btn.setAttribute("aria-pressed", String(value === activeFilter));
+
+        if (value !== "all") {
+            const chip = document.createElement("span");
+            chip.className = `legend-chip ${LEGEND_SHAPE_CLASS[value] || ""}`.trim();
+            chip.dataset.category = value;
+            chip.setAttribute("aria-hidden", "true");
+            btn.appendChild(chip);
+        }
+        btn.appendChild(document.createTextNode(label));
+
+        btn.addEventListener("click", () => {
+            activeFilter = value;
+            filtersContainer.querySelectorAll(".list-filter-btn").forEach((b) => {
+                b.setAttribute("aria-pressed", String(b.dataset.filter === activeFilter));
+            });
+            renderItems();
         });
 
-        if (loc.links && loc.links.length) {
-            const links = document.createElement("div");
-            links.className = "card-links";
-            loc.links.forEach(({ label, href }) => {
-                const a = document.createElement("a");
-                a.href = href;
-                a.textContent = `${label} →`;
-                if (href.startsWith("http") || href.startsWith("mailto:")) {
-                    a.rel = "noopener";
-                    if (href.startsWith("http")) a.target = "_blank";
-                }
-                links.appendChild(a);
-            });
-            card.appendChild(links);
-        }
+        return btn;
+    }
 
-        container.appendChild(card);
+    filtersContainer.appendChild(buildFilterButton("all", "All"));
+    categories.forEach((category) => {
+        filtersContainer.appendChild(buildFilterButton(category, category.charAt(0).toUpperCase() + category.slice(1)));
     });
+
+    renderItems();
 }
