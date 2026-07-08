@@ -11,7 +11,7 @@ export const locations = [
         neighbourhood: 'West Island',
         category: 'city',
         coords: { x: 44, y: 220 },
-        blurb: 'Western tip of the Island of Montreal.'
+        blurb: "You're here for one of three reasons — John Abbott, stuck at MacDonald Campus, or actual farming. Word is there's a nice boardwalk too, though the one time I checked it out I mostly remember paying too much for pizza."
     },
     {
         id: 'pointe-claire',
@@ -19,7 +19,7 @@ export const locations = [
         neighbourhood: 'West Island',
         category: 'city',
         coords: { x: 150, y: 230 },
-        blurb: 'West Island city along the south shore of the island.'
+        blurb: "Home base — same street my whole life, every inch of it mapped out via runs and bike rides at this point. Halloween's a shadow of what it used to be, and the neighbourhood basketball games a few doors down don't happen anymore either, mostly because everyone grew up and scattered. Somewhere between generations, kids stopped playing outside with their neighbours. Thank you, technology."
     },
     {
         id: 'dollard-des-ormeaux',
@@ -27,7 +27,7 @@ export const locations = [
         neighbourhood: 'West Island',
         category: 'city',
         coords: { x: 130, y: 180 },
-        blurb: 'West Island city north of Pointe-Claire.'
+        blurb: "A serious upgrade from Pierrefonds — bigger house, bigger everything, and a park with an actual lake as the view. Basketball net out back hosted father-son showdowns with my brother that always got more competitive than they needed to. Summers ran on campfires of questionable legality, built inside a repurposed washing machine drum, smores mandatory. My second home."
     },
     {
         id: 'roxboro',
@@ -35,15 +35,15 @@ export const locations = [
         neighbourhood: 'Pierrefonds-Roxboro',
         category: 'city',
         coords: { x: 152, y: 140 },
-        blurb: 'North-shore neighbourhood along the Riviere des Prairies.'
+        blurb: "Local legend says there used to be a full-size Adonis here — now it's a hospital, which tells you a lot about how this neighborhood ranks its priorities. Samosas from up the street were a weekly ritual. This is also where I learned to drive — including my first real ice-swerve, mid-lesson, dead of winter. Didn't panic, kept it together, and I'm still a little proud of that one."
     },
     {
         id: 'pierrefonds',
         name: 'Pierrefonds',
-        neighbourhood: 'Pierrefonds',
+        neighbourhood: 'Pierrefonds - Rue Des Arbres',
         category: 'city',
         coords: { x: 85, y: 168 },
-        blurb: 'North-shore neighbourhood along the Riviere des Prairies.'
+        blurb: 'A street name I never learned to pronounce, on a street I could still find blindfolded. Home was the yellow bungalow with the pear tree out back, and a bunk bed shared with my brother — most nights capped off with an episode of The Adventures of Tom Sawyer, watched from behind a pillow whenever Joe showed up.'
     },
     {
         id: 'lachine',
@@ -51,15 +51,15 @@ export const locations = [
         neighbourhood: 'Southwest Montreal',
         category: 'city',
         coords: { x: 240, y: 255 },
-        blurb: 'Southwest borough along Lac Saint-Louis and the Lachine Canal.'
+        blurb: "Old neighbourhood, school-dense, with genuinely gorgeous parks along the water — Parc René-Lévesque is easily one of the nicest in Montreal. High school used to drag the entire student body there once a year for the final running test, which at the time felt like punishment. Appreciate the park a lot more now that nobody's timing me."
     },
     {
-        id: 'ahuntsic',
-        name: 'Ahuntsic',
+        id: 'ahuntsic-cartierville',
+        name: 'Ahuntsic-Cartierville',
         neighbourhood: 'North Montreal',
         category: 'city',
         coords: { x: 236, y: 126 },
-        blurb: 'North-central neighbourhood along the Riviere des Prairies.'
+        blurb: "Admittedly a bit of a mystery to me — mostly just knew it as 'the annoying commute to judo.' REM's apparently fixed that, so no more excuses. Feels like one of the more French-speaking corners of the city. Also home to a bouldering gym I'd hit up occasionally for the Friday special."
     },
     {
         id: 'plateau-mont-royal',
@@ -67,135 +67,135 @@ export const locations = [
         neighbourhood: 'Central Montreal',
         category: 'city',
         coords: { x: 338, y: 176 },
-        blurb: 'Dense central neighbourhood east of Mount Royal.'
+        blurb: "Laid-back, artsy, genuinely fun to just wander — cafes, vintage shops, and niche little stores around every corner. This is where the good restaurants and bars actually live, which is really the main draw for me. Also scattered with artisanal ice cream spots, which is an extremely effective bonus."
     },
     {
-        id: 'ville-marie',
-        name: 'Ville-Marie',
-        neighbourhood: 'Downtown Montreal',
+        id: 'downtown-montreal',
+        name: 'Downtown Montreal',
+        neighbourhood: 'Ville-Marie',
         category: 'city',
         coords: { x: 320, y: 232 },
-        blurb: 'Downtown core south of Mount Royal.'
+        blurb: "Everyone passes through here eventually, resident or visitor. Stopped needing a map for this stretch a while ago. Oddly stacked with Asian restaurants along the green line — no idea why, not complaining. Runs roughly from Concordia to Berri-UQAM, packed with university students, office workers, and shoppers doing their thing. Basically every other Canadian downtown, except with actual personality — at least it's not gray like Toronto."
     },
     {
         id: 'dairy-queen',
         name: 'Dairy Queen',
-        neighbourhood: 'Near Dollard-des-Ormeaux',
+        neighbourhood: 'Crew Member',
         category: 'job',
         coords: { x: 155, y: 200 },
-        blurb: 'Work location near DDO.'
+        blurb: "Prime Covid-era employment, complete with classified DQ secrets I'm contractually obligated to keep vague about. Summer rushes taught me to work under pressure; winter shifts alone taught me real responsibility. Botched orders came home as family snacks — zero-waste policy, unofficially. Good era, right up until everyone quit and the workforce became exclusively 15-year-olds."
     },
     {
         id: 'sushi-ya-matcha',
         name: 'Sushi Ya Matcha',
-        neighbourhood: 'Near Dollard-des-Ormeaux',
+        neighbourhood: 'Sushi Chef',
         category: 'job',
         coords: { x: 104, y: 188 },
-        blurb: 'Sushi chef work location near DDO.'
+        blurb: "A friend's parents opened this place and needed hands, so I became a sushi chef for a few months — or 'roller,' if we're being honest about what the job actually was. Small, cute spot, tucked into an indoor mall with no windows nor much needed sunlight. Pro tip from the trenches: mayo on the gloves keeps the rice from sticking. You're welcome."
     },
     {
         id: 'camp-counselor',
-        name: 'Camp Counselor',
-        neighbourhood: 'Near Pointe-Claire',
+        name: 'Pointe-Claire Day Camp',
+        neighbourhood: 'Grasshopper Position',
         category: 'job',
         coords: { x: 110, y: 247 },
-        blurb: 'Camp counselor work location near Pointe-Claire.'
+        blurb: "One summer, mid-Covid, hopping between groups instead of managing one alone — genuinely the best arrangement going. Nobody expected me to be good with kids, least of all me. Turned out to be the laid-back, competitive type who got along great with the sassiest campers. Fond memories overall — deeply regrettable ponytail, on hair that had zero business being so long."
     },
     {
         id: 'sansotei-ramen',
         name: 'Sansotei Ramen',
-        neighbourhood: 'Near Ville-Marie',
+        neighbourhood: 'Server',
         category: 'job',
         coords: { x: 302, y: 230 },
-        blurb: 'Server work location near Ville-Marie.'
+        blurb: "Two years part-time serving here, and somehow it turned into one of the best social circles I've got — coworkers became genuine friends, and even the ones who didn't still got the full download on my personal life mid-shift. Ready to leave for the tech career, but know I'll miss the company more than I'll admit. A little tired of ramen at this point, and even more tired of customer-pleasing — turns out I'm a people person, not a stranger pleaser. Possibly not the ideal mindset for a server job."
     },
     {
         id: 'dollarama',
         name: 'Dollarama',
-        neighbourhood: 'Near Pointe-Claire',
+        neighbourhood: 'Retail Associate',
         category: 'job',
         coords: { x: 137, y: 228 },
-        blurb: 'Work location near Pointe-Claire.'
+        blurb: "First real job, a quick bike or car ride away depending on the day. Lots of manual work — warehouse duty, trash detail, repeat. Turns out 'everything's a few dollars' doesn't mean anything's free — couldn't even take the garbage home. Plot twist: my manager was secretly a pastor, and breaks sometimes came with an unscheduled Jesus talk and a pamphlet. Quit the second school started and never looked back."
     },
     {
         id: 'primary-school',
-        name: 'Primary School',
-        neighbourhood: 'Near Roxboro',
+        name: 'École Charles-Perrault',
+        neighbourhood: 'Primary School',
         category: 'school',
         coords: { x: 140, y: 154 },
-        blurb: 'School location near Roxboro.'
+        blurb: "Private school, serious homework load, teachers who didn't go easy on us but clearly knew what they were doing — also, hands down, the best cafeteria food of my life. Stuck around every single day for the after-school program, and that's where the real crew was — snack-sharing, low-stakes, the good kind of daily ritual. Finished top 3 most years, somehow never quite cracked first."
     },
     {
         id: 'high-school',
-        name: 'High School',
-        neighbourhood: 'Near Lachine',
+        name: 'Collège Saint-Louis',
+        neighbourhood: 'High School',
         category: 'school',
         coords: { x: 218, y: 252 },
-        blurb: 'School location near Lachine.'
+        blurb: "One of the top public high schools at the time, locked in an eternal rivalry with Collège Saint-Anne down the road — rich snobs, allegedly. No doubt the peak of my awkward teenage years: multiple crushes, zero results, and creative writing assignments that turned into full oversharing sessions. Frenemies were lunch regulars and the actual highlight was staying late after school with the crowd that did the same — cards, homework, vibes. Also developed a completely unnecessary level of skill at foosball."
     },
     {
         id: 'cegep',
-        name: 'CEGEP',
-        neighbourhood: 'Near Sainte-Anne-de-Bellevue',
+        name: 'John Abbott College',
+        neighbourhood: 'Cegep',
         category: 'school',
         coords: { x: 54, y: 230 },
-        blurb: 'School location near Sainte-Anne-de-Bellevue.'
+        blurb: "Followed a childhood friend into the program with zero clue what I actually wanted to do — landed in a tight cohort of close friends and a few certified weirdos. Science teachers were top-notch. English, especially the Shakespeare unit, was somehow the scariest class on the schedule. A class called Sex and Sexuality ended up teaching me more about life than anything else because what is life if not for our relationships."
     },
     {
         id: 'mcgill',
         name: 'McGill University',
-        neighbourhood: 'Near Ville-Marie',
+        neighbourhood: 'University',
         category: 'school',
         coords: { x: 318, y: 210 },
-        blurb: 'University location near Ville-Marie.'
+        blurb: "Prestigious, gorgeous lawn, dead center of downtown. Spent countless hours on the second floor of Redpath Library, where actual studying happened maybe 30% of the time. The degree turned out somewhat obsolete the moment AI showed up, but would do the whole thing again just for the people. Joined HKSN, which somehow turned into a genuine love for Hong Kong and a network of connections both inside and outside the club. Biggest regret: never went for an internship, convinced I had nothing to show yet. Real advice — go for it, sooner than feels ready."
     },
     {
         id: 'judo',
         name: 'Judo',
-        neighbourhood: 'Near Ahuntsic',
+        neighbourhood: 'Club Hakudokan',
         category: 'hobby',
         coords: { x: 225, y: 140 },
-        blurb: 'Judo dojo near Ahuntsic.'
+        blurb: "Started young, showed up every week for about 15 years straight, slowly climbing to brown belt until Covid ended the streak. Loved sparring against strong opponents, hated the pressure of actual competitions. For some reason, always weirdly bad at chokes — small hands, malfunctioning brain, unclear which. Want back in, but showing up again with a brown belt after all this time feels a little like wearing a costume that doesn't fit anymore."
     },
     {
         id: 'dragon-boat',
         name: 'Dragon Boat',
-        neighbourhood: 'Lachine Canal',
+        neighbourhood: 'McGill DBZ',
         category: 'hobby',
         coords: { x: 312, y: 273 },
-        blurb: 'Dragon boat paddling on the Lachine Canal.'
+        blurb: "Two summers with the team, love-hate relationship with the sport the whole time. Brutal, one-sided, exhausting, competition days were pure stress — but winning medals with your crew through actual teamwork hits different. Never a hardcore paddler, never made the A boat, which in hindsight might've been for the best. Biggest flex remains topping the fitness test leaderboard for pushups."
     },
     {
         id: 'bouldering',
         name: 'Bouldering',
-        neighbourhood: 'Near Pointe-Claire',
+        neighbourhood: 'Beta Bloc',
         category: 'hobby',
         coords: { x: 163, y: 220 },
-        blurb: 'Bouldering gym near Pointe-Claire.'
+        blurb: "Leaning hard into the software-engineer stereotype, but it's genuinely fun — real mind-body connection, and yes, the forearms and shoulders show up eventually. Goal is to send a V5 someday, except my gym doesn't even grade on that scale, which is its own special kind of frustrating. Blistered, torn-up hands: not for show, just the tax you pay."
     },
     {
         id: 'run-club',
         name: 'Run Club',
-        neighbourhood: 'Near LaSalle',
+        neighbourhood: 'Café Cosé',
         category: 'hobby',
         coords: { x: 348, y: 274 },
-        blurb: 'Run club route near LaSalle.'
+        blurb: "Tried one out on a whim, bored one summer and swept up in the hype. Recruited friends to join — they bailed, went anyway, character development. Learned the hard way that run clubs aren't really about the running, they're a whole social scene. Would've been useful info before showing up in AirPods for the entire run, blasting music while nobody else even had headphones in. Trying a different approach next time. Solo runs are still fun!"
     }, 
     {
         id: 'thrifting',
         name: 'Thrifting',
-        neighbourhood: 'Near DDO',
+        neighbourhood: 'Renaissance Fripe Galerie des Sources',
         category: 'hobby',
         coords: { x: 166, y: 207 },
-        blurb: 'Thrifting location near DDO.'
+        blurb: "Wardrobe's basically all secondhand these days, almost entirely from one local spot I've fully colonized. Sessions run long — ten-plus try-ons per visit, easy. Go alone on principle, since friends have zero patience and always want to bail before I'm done. Budget discipline is a work in progress; good quality at a low price is nearly impossible to walk away from. Points card acquired — basically adulting."
     }, 
     {
         id: 'biking',
         name: 'Biking',
-        neighbourhood: 'Near Pointe-Claire',
+        neighbourhood: 'Near the water',
         category: 'hobby',
         coords: { x: 150, y: 255 },
-        blurb: 'Biking route near the water.'
+        blurb: "Cardio that doesn't feel like a workout — the whole point is wandering far enough to stop thinking about anything and just enjoy the breeze. Best route follows the bike path along the water, stringing together different city districts with genuinely gorgeous scenery the whole way. Still owe myself more house-to-end-of-the-canal-and-back rides. Hands down best activity on a good summer day."
     }, 
     
 
