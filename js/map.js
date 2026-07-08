@@ -47,6 +47,20 @@ const nodeById = new Map();
 const locById = new Map(locations.map((l) => [l.id, l]));
 let openedFromNode = null;
 
+// "You are here" avatar: an id-based cursor over `locations`, independent of
+// DOM focus so mouse hover can move it without stealing keyboard focus.
+const AVATAR_START_ID = "pointe-claire";
+let currentId = null;
+let avatarLayer = null; // outer <g id="map-avatar"> — position lives here, via CSS transition
+let pointerOverMap = false;
+
+const ARROW_DIRECTIONS = {
+    ArrowUp: [0, -1],
+    ArrowDown: [0, 1],
+    ArrowLeft: [-1, 0],
+    ArrowRight: [1, 0],
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     const routesLayer = document.getElementById("map-routes");
     const nodesLayer = document.getElementById("map-nodes");
@@ -64,10 +78,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     renderList(listContainer, listFilters);
 
+    avatarLayer = document.getElementById("map-avatar");
+    avatarLayer.appendChild(buildAvatar());
+    const startLoc = locById.get(AVATAR_START_ID) || locations[0];
+    if (startLoc) setCurrentLocation(startLoc);
+
     document.getElementById("panel-close").addEventListener("click", () => closePanel(panel));
 
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && !panel.hidden) closePanel(panel);
+    });
+
+    // Arrow-key overworld navigation: only takes over while the map is
+    // actually "in use" (a node is focused, or the pointer is over the SVG),
+    // so it never hijacks normal page scrolling elsewhere on the page.
+    svg.addEventListener("mouseenter", () => (pointerOverMap = true));
+    svg.addEventListener("mouseleave", () => (pointerOverMap = false));
+
+    document.addEventListener("keydown", (e) => {
+        const dir = ARROW_DIRECTIONS[e.key];
+        if (!dir) return;
+        if (!panel.hidden) return;
+        const mapActive = pointerOverMap || (document.activeElement && document.activeElement.closest(".map-node"));
+        if (!mapActive) return;
+        const current = locById.get(currentId);
+        if (!current) return;
+        const next = nearestInDirection(current, dir);
+        if (!next) return;
+        e.preventDefault();
+        setCurrentLocation(next, { focusNode: true });
     });
 
     // Click on open water (not a node) closes the panel
@@ -144,6 +183,58 @@ function buildCave(inner) {
     inner.appendChild(svgEl("rect", { x: 3, y: 3, width: 14, height: 14, rx: 4, fill: "#9a8c7a", stroke: "rgba(40, 20, 10, 0.35)", "stroke-width": 1 }));
     inner.appendChild(svgEl("rect", { x: 4.5, y: 4, width: 6, height: 2.2, rx: 1.1, fill: "#c3b6a2", opacity: 0.8 }));
     inner.appendChild(svgEl("path", { d: "M6.5 16 L6.5 11 Q6.5 6.5 10 6.5 Q13.5 6.5 13.5 11 L13.5 16 Z", fill: "#2b2018" }));
+}
+
+// A little "you are here" character: a shadow, a rounded-square body, and two
+// dot eyes, in a cyan that never matches a category color. Stands just above
+// whichever node is current, sliding between them via the CSS transition on
+// #map-avatar.
+function buildAvatar() {
+    const g = svgEl("g", { id: "avatar-figure" });
+    g.appendChild(svgEl("ellipse", { class: "avatar-shadow", cx: 10, cy: 19, rx: 6, ry: 2 }));
+    g.appendChild(svgEl("rect", { class: "avatar-body", x: 3, y: 5, width: 14, height: 13, rx: 5 }));
+    g.appendChild(svgEl("circle", { class: "avatar-eye", cx: 7.5, cy: 11.5, r: 1.4 }));
+    g.appendChild(svgEl("circle", { class: "avatar-eye", cx: 12.5, cy: 11.5, r: 1.4 }));
+    return g;
+}
+
+function positionAvatar(coords) {
+    avatarLayer.setAttribute("transform", `translate(${coords.x - 10}, ${coords.y - 22})`);
+}
+
+// Single source of truth for "where the avatar is." Independent of DOM focus
+// so mouse hover can move it without stealing keyboard focus from elsewhere;
+// arrow-key navigation opts into also moving focus via `focusNode`.
+function setCurrentLocation(loc, { focusNode = false } = {}) {
+    currentId = loc.id;
+    positionAvatar(loc.coords);
+    if (focusNode) {
+        const node = nodeById.get(loc.id);
+        if (node) node.focus();
+    }
+}
+
+// Directional-focus heuristic: among all other locations, keep only those
+// strictly in front of `current` along `dir`, then prefer the one that's
+// closest while penalizing how far off-axis it is (so "up" doesn't jump
+// sideways to a much-closer node that's barely above you).
+function nearestInDirection(current, [dx, dy]) {
+    let best = null;
+    let bestScore = Infinity;
+    locations.forEach((loc) => {
+        if (loc.id === current.id) return;
+        const ox = loc.coords.x - current.coords.x;
+        const oy = loc.coords.y - current.coords.y;
+        const along = ox * dx + oy * dy;
+        if (along <= 0) return;
+        const off = Math.abs(ox * dy - oy * dx);
+        const score = along + off * 2;
+        if (score < bestScore) {
+            bestScore = score;
+            best = loc;
+        }
+    });
+    return best;
 }
 
 // The eight ports a road can attach to: a side of the marker plus a half-lane.
@@ -272,9 +363,15 @@ function buildNode(loc, banner, panel) {
             openPanel(loc, g, panel);
         }
     });
-    g.addEventListener("mouseenter", () => (banner.textContent = loc.name.toUpperCase()));
+    g.addEventListener("mouseenter", () => {
+        banner.textContent = loc.name.toUpperCase();
+        setCurrentLocation(loc);
+    });
     g.addEventListener("mouseleave", () => (banner.textContent = ""));
-    g.addEventListener("focus", () => (banner.textContent = loc.name.toUpperCase()));
+    g.addEventListener("focus", () => {
+        banner.textContent = loc.name.toUpperCase();
+        setCurrentLocation(loc);
+    });
     g.addEventListener("blur", () => (banner.textContent = ""));
 
     return g;

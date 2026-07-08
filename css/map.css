@@ -211,6 +211,36 @@
     to   { transform: translateY(-4px); }
 }
 
+/* ---- "You are here" avatar ---- */
+
+#map-avatar {
+    pointer-events: none;
+    transition: transform 0.18s ease;
+}
+
+#avatar-figure {
+    animation: avatar-bob 0.6s steps(2, jump-none) infinite;
+}
+
+.avatar-shadow {
+    fill: rgba(20, 30, 20, 0.3);
+}
+
+.avatar-body {
+    fill: #00bcd4;
+    stroke: #0a4a52;
+    stroke-width: 1.25;
+}
+
+.avatar-eye {
+    fill: #0a2630;
+}
+
+@keyframes avatar-bob {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-2px); }
+}
+
 /* ---- Category legend ---- */
 
 .map-legend {
@@ -290,6 +320,8 @@
 
 @media (prefers-reduced-motion: reduce) {
     .start-cue { animation: none; }
+    #avatar-figure { animation: none; }
+    #map-avatar { transition: none; }
 }
 
 /* ---- Dialogue-box panel ---- */
