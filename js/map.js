@@ -6,6 +6,13 @@ import { locations, routes } from "../data/locations.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
+// Road geometry (city marker is a 20px cell). A road is one tile wide and sits on
+// the top/bottom (or left/right) half of a city's side, tucked under the marker.
+const ROAD_W = 10; // road width (1 tile)
+const HALF = 10;   // half a city cell — the marker's edge
+const LANE = 0;    // lane offset from centre (quarter cell)
+const TUCK = 6;    // how far the road end tucks back under the marker
+
 // main = marker face, dark = bevel shadow, light = top highlight.
 // Colour encodes the category, so the map scales as nodes are added.
 const CATEGORY_COLORS = {
@@ -139,18 +146,69 @@ function buildCave(inner) {
     inner.appendChild(svgEl("path", { d: "M6.5 16 L6.5 11 Q6.5 6.5 10 6.5 Q13.5 6.5 13.5 11 L13.5 16 Z", fill: "#2b2018" }));
 }
 
-// A stepped orthogonal road between two nodes, like an overworld route.
+// The eight ports a road can attach to: a side of the marker plus a half-lane.
+// Each returns the exit point on the marker's edge, its axis, and outward dir.
+const PORTS = {
+    "right-top":    (c) => ({ x: c.x + HALF, y: c.y - LANE, axis: "h", dir: 1 }),
+    "right-bottom": (c) => ({ x: c.x + HALF, y: c.y + LANE, axis: "h", dir: 1 }),
+    "left-top":     (c) => ({ x: c.x - HALF, y: c.y - LANE, axis: "h", dir: -1 }),
+    "left-bottom":  (c) => ({ x: c.x - HALF, y: c.y + LANE, axis: "h", dir: -1 }),
+    "top-left":     (c) => ({ x: c.x - LANE, y: c.y - HALF, axis: "v", dir: -1 }),
+    "top-right":    (c) => ({ x: c.x + LANE, y: c.y - HALF, axis: "v", dir: -1 }),
+    "bottom-left":  (c) => ({ x: c.x - LANE, y: c.y + HALF, axis: "v", dir: 1 }),
+    "bottom-right": (c) => ({ x: c.x + LANE, y: c.y + HALF, axis: "v", dir: 1 }),
+};
+
+// Exit point for a named port, pulled TUCK px back under the marker so the road
+// starts beneath the square with no seam.
+function portPoint(center, port) {
+    const p = PORTS[port](center);
+    if (p.axis === "h") p.x -= p.dir * TUCK;
+    else p.y -= p.dir * TUCK;
+    return p;
+}
+
+// Fallback when a port is omitted: face the other city, on the nearer lane.
+function defaultPort(from, to) {
+    const dx = to.x - from.x, dy = to.y - from.y;
+    if (Math.abs(dx) >= Math.abs(dy)) {
+        return `${dx >= 0 ? "right" : "left"}-${dy < 0 ? "top" : "bottom"}`;
+    }
+    return `${dy >= 0 ? "bottom" : "top"}-${dx < 0 ? "left" : "right"}`;
+}
+
+// Orthogonal polyline that leaves `a` along its axis and enters `b` along its
+// axis: a Z-step when both share an axis, otherwise a single L-corner.
+function elbow(a, b) {
+    if (a.axis === "h" && b.axis === "h") {
+        const mx = (a.x + b.x) / 2;
+        return [[a.x, a.y], [mx, a.y], [mx, b.y], [b.x, b.y]];
+    }
+    if (a.axis === "v" && b.axis === "v") {
+        const my = (a.y + b.y) / 2;
+        return [[a.x, a.y], [a.x, my], [b.x, my], [b.x, b.y]];
+    }
+    if (a.axis === "h") return [[a.x, a.y], [b.x, a.y], [b.x, b.y]];
+    return [[a.x, a.y], [a.x, b.y], [b.x, b.y]];
+}
+
+// Overworld roads: a flat, one-tile-wide path between two cities, attaching to a
+// chosen side + lane of each marker (never through its centre). A darker casing
+// under a lighter fill gives the thin outline. Casings are drawn first for every
+// road, then all fills, so crossings read as clean crossroads. City squares draw
+// afterwards (in #map-nodes), so the "towns" sit on top of the roads.
 function drawRoutes(layer) {
-    routes.forEach(([fromId, toId]) => {
-        const a = locById.get(fromId);
-        const b = locById.get(toId);
+    const ds = [];
+    routes.forEach((r) => {
+        const a = locById.get(r.from);
+        const b = locById.get(r.to);
         if (!a || !b) return;
-        const midX = (a.coords.x + b.coords.x) / 2;
-        const d = `M ${a.coords.x} ${a.coords.y} H ${midX} V ${b.coords.y} H ${b.coords.x}`;
-        layer.appendChild(svgEl("path", { class: "route-casing", d }));
-        layer.appendChild(svgEl("path", { class: "route-fill", d }));
-        layer.appendChild(svgEl("path", { class: "route-dash", d }));
+        const pa = portPoint(a.coords, r.fromPort || defaultPort(a.coords, b.coords));
+        const pb = portPoint(b.coords, r.toPort || defaultPort(b.coords, a.coords));
+        ds.push("M " + elbow(pa, pb).map((p) => p.join(" ")).join(" L "));
     });
+    ds.forEach((d) => layer.appendChild(svgEl("path", { class: "route-casing", d })));
+    ds.forEach((d) => layer.appendChild(svgEl("path", { class: "route-fill", d })));
 }
 
 // Uniform rounded-square marker (cream border + bevel), except projects, which

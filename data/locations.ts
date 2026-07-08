@@ -30,9 +30,40 @@ export interface Location {
     links?: { label: string; href: string }[];
 }
 
-/** Routes are disabled while rebuilding the map from accurate city positions. */
-export const routes: [string, string][] = [
-    // Previous routes are intentionally commented out while city placement is rebuilt.
+/**
+ * A road attaches to one of eight "ports" on a city marker: a side (the 20px
+ * square is 2 tiles wide) plus which half-lane it uses. `right-top` leaves the
+ * right side on the upper lane; `top-left` leaves the top side on the left lane.
+ */
+export type Port =
+    | 'right-top' | 'right-bottom'
+    | 'left-top'  | 'left-bottom'
+    | 'top-left'  | 'top-right'
+    | 'bottom-left' | 'bottom-right';
+
+export interface Route {
+    from: string;
+    to: string;
+    /** Port the road leaves `from` / enters `to`. Omit to auto-face the other city. */
+    fromPort?: Port;
+    toPort?: Port;
+}
+
+/**
+ * City-to-city roads only. Ports are pre-chosen to face each neighbour and to be
+ * distinct per city (no two roads share a port), so roads never overlap. Nudge a
+ * port here to change which side/lane a road uses.
+ */
+export const routes: Route[] = [
+    { from: 'sainte-anne-de-bellevue', fromPort: 'right-bottom', to: 'pointe-claire',         toPort: 'left-top'     },
+    { from: 'dollard-des-ormeaux',     fromPort: 'bottom-right', to: 'pointe-claire',         toPort: 'top-left'     },
+    { from: 'pierrefonds',             fromPort: 'right-bottom', to: 'dollard-des-ormeaux',   toPort: 'left-top'     },
+    { from: 'dollard-des-ormeaux',     fromPort: 'top-right',    to: 'roxboro',               toPort: 'left-bottom'  },
+    { from: 'roxboro',                 fromPort: 'right-top',    to: 'ahuntsic-cartierville', toPort: 'left-bottom'  },
+    { from: 'pointe-claire',           fromPort: 'right-bottom', to: 'lachine',               toPort: 'top-left'     },
+    { from: 'lachine',                 fromPort: 'right-top',    to: 'downtown-montreal',     toPort: 'bottom-left'  },
+    { from: 'downtown-montreal',       fromPort: 'right-top',    to: 'plateau-mont-royal',    toPort: 'bottom-left'  },
+    // { from: 'plateau-mont-royal',   fromPort: 'left-top',     to: 'ahuntsic-cartierville', toPort: 'right-bottom' },
 ];
 
 export const locations: Location[] = [
@@ -113,7 +144,7 @@ export const locations: Location[] = [
         name: 'Dairy Queen',
         neighbourhood: 'Crew Member',
         category: 'job',
-        coords: { x: 155, y: 200 },
+        coords: { x: 158, y: 197 },
         blurb: "Prime Covid-era employment, complete with classified DQ secrets I'm contractually obligated to keep vague about. Summer rushes taught me to work under pressure; winter shifts alone taught me real responsibility. Botched orders came home as family snacks — zero-waste policy, unofficially. Good era, right up until everyone quit and the workforce became exclusively 15-year-olds."
     },
     {
@@ -121,8 +152,8 @@ export const locations: Location[] = [
         name: 'Sushi Ya Matcha',
         neighbourhood: 'Sushi Chef',
         category: 'job',
-        coords: { x: 104, y: 188 },
-        blurb: "A friend's parents opened this place and needed hands, so I became a sushi chef for a few months — or 'roller,' if we're being honest about what the job actually was. Small, cute spot, tucked into an indoor mall with no windows nor much needed sunlight. Pro tip from the trenches: mayo on the gloves keeps the rice from sticking. You're welcome."
+        coords: { x: 111, y: 190 },
+        blurb: "A friend's parents opened this place and needed hands, so I became a sushi chef for a few months — or 'roller', if we're being honest about what the job actually was. Small, cute spot, tucked into an indoor mall with no windows nor much needed sunlight. Pro tip from the trenches: mayo on the gloves keeps the rice from sticking. You're welcome."
     },
     {
         id: 'camp-counselor',
@@ -145,7 +176,7 @@ export const locations: Location[] = [
         name: 'Dollarama',
         neighbourhood: 'Retail Associate',
         category: 'job',
-        coords: { x: 137, y: 228 },
+        coords: { x: 133, y: 220 },
         blurb: "First real job, a quick bike or car ride away depending on the day. Lots of manual work — warehouse duty, trash detail, repeat. Turns out 'everything's a few dollars' doesn't mean anything's free — couldn't even take the garbage home. Plot twist: my manager was secretly a pastor, and breaks sometimes came with an unscheduled Jesus talk and a pamphlet. Quit the second school started and never looked back."
     },
     {
@@ -227,6 +258,14 @@ export const locations: Location[] = [
         category: 'hobby',
         coords: { x: 150, y: 255 },
         blurb: "Cardio that doesn't feel like a workout — the whole point is wandering far enough to stop thinking about anything and just enjoy the breeze. Best route follows the bike path along the water, stringing together different city districts with genuinely gorgeous scenery the whole way. Still owe myself more house-to-end-of-the-canal-and-back rides. Hands down best activity on a good summer day."
+    },
+    {
+        id: 'pickleball',
+        name: 'Pickleball',
+        neighbourhood: 'Parks in Kirkland',
+        category: 'hobby',
+        coords: { x: 68, y: 200 },
+        blurb: "Genuinely obsessed. Don't even own a racket — started by borrowing equipment from a friend and her family, and never looked back. Kirkland has actual outdoor courts, which still feels like a small miracle. The skill curve is the best part: easy to pick up, easy to improve, so pretty much anyone can play at a decent level fast. Doubles over singles, no debate. Genuinely don't understand people who choose tennis over pickleball if they want to have fun."
     }
 ];
 

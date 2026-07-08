@@ -114,29 +114,23 @@
 
 /* ---- Overworld routes ---- */
 
+/* Flat roads: a lighter tan fill inside a darker casing gives a thin outline,
+   with no internal seams. Round joins soften the corners; butt caps end flush
+   under the city markers. */
 .route-casing {
     fill: none;
     stroke: #cf8a34;
-    stroke-width: 9;
-    stroke-linecap: round;
+    stroke-width: 12;
+    stroke-linecap: butt;
     stroke-linejoin: round;
 }
 
 .route-fill {
     fill: none;
     stroke: #f4c164;
-    stroke-width: 5.5;
-    stroke-linecap: round;
+    stroke-width: 10;
+    stroke-linecap: butt;
     stroke-linejoin: round;
-}
-
-.route-dash {
-    fill: none;
-    stroke: #fbe6b0;
-    stroke-width: 1.4;
-    stroke-linecap: round;
-    stroke-dasharray: 1 7;
-    opacity: 0.9;
 }
 
 /* ---- Route-sign banner (shows hovered/focused location name) ---- */
