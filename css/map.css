@@ -227,13 +227,29 @@
 }
 
 .avatar-body {
-    fill: #00bcd4;
-    stroke: #0a4a52;
+    fill: #fbf3df;
+    stroke: #8a6d3b;
     stroke-width: 1.25;
 }
 
 .avatar-eye {
     fill: #0a2630;
+}
+
+.avatar-eye-shine {
+    fill: #ffffff;
+}
+
+.avatar-blush {
+    fill: #ff8fa3;
+    opacity: 0.7;
+}
+
+.avatar-mouth {
+    fill: none;
+    stroke: #0a2630;
+    stroke-width: 1;
+    stroke-linecap: round;
 }
 
 @keyframes avatar-bob {

@@ -185,16 +185,23 @@ function buildCave(inner) {
     inner.appendChild(svgEl("path", { d: "M6.5 16 L6.5 11 Q6.5 6.5 10 6.5 Q13.5 6.5 13.5 11 L13.5 16 Z", fill: "#2b2018" }));
 }
 
-// A little "you are here" character: a shadow, a rounded-square body, and two
-// dot eyes, in a cyan that never matches a category color. Stands just above
-// whichever node is current, sliding between them via the CSS transition on
-// #map-avatar.
+// A little "you are here" ghost: a shadow, a domed-top/wavy-bottom silhouette,
+// and big eyes with a sparkle in each. Floats just above whichever node is
+// current, sliding between them via the CSS transition on #map-avatar.
 function buildAvatar() {
     const g = svgEl("g", { id: "avatar-figure" });
     g.appendChild(svgEl("ellipse", { class: "avatar-shadow", cx: 10, cy: 19, rx: 6, ry: 2 }));
-    g.appendChild(svgEl("rect", { class: "avatar-body", x: 3, y: 5, width: 14, height: 13, rx: 5 }));
-    g.appendChild(svgEl("circle", { class: "avatar-eye", cx: 7.5, cy: 11.5, r: 1.4 }));
-    g.appendChild(svgEl("circle", { class: "avatar-eye", cx: 12.5, cy: 11.5, r: 1.4 }));
+    g.appendChild(svgEl("path", {
+        class: "avatar-body",
+        d: "M3,10 A7,7 0 0 1 17,10 L17,16 Q14.667,19 12.333,16 Q10,19 7.667,16 Q5.333,19 3,16 Z",
+    }));
+    g.appendChild(svgEl("circle", { class: "avatar-eye", cx: 7.3, cy: 9.2, r: 1.6 }));
+    g.appendChild(svgEl("circle", { class: "avatar-eye", cx: 12.7, cy: 9.4, r: 2.0 }));
+    g.appendChild(svgEl("circle", { class: "avatar-eye-shine", cx: 6.6, cy: 8.8, r: 0.6 }));
+    g.appendChild(svgEl("circle", { class: "avatar-eye-shine", cx: 12, cy: 8.8, r: 0.6 }));
+    // g.appendChild(svgEl("ellipse", { class: "avatar-blush", cx: 5.6, cy: 12.6, rx: 1.3, ry: 0.8 }));
+    // g.appendChild(svgEl("ellipse", { class: "avatar-blush", cx: 14.4, cy: 12.6, rx: 1.3, ry: 0.8 }));
+    g.appendChild(svgEl("path", { class: "avatar-mouth", d: "M8.9,13.4 Q10,12.7 11.1,13.4" }));
     return g;
 }
 
