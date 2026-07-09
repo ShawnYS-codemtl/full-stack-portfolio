@@ -196,7 +196,7 @@ main {
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 60px;
+  padding: 0 60px 40px;
 }
 
 .about-intro {
@@ -359,6 +359,13 @@ margin-top: 15px;
   margin: 5px 0 10px;
 }
 
+.company-tag {
+  font-style: normal;
+  font-weight: 400;
+  color: #777;
+  font-size: 0.9rem;
+}
+
 .job-details {
   list-style-type: disc;
   padding-left: 20px;
@@ -515,8 +522,10 @@ margin-top: 15px;
 /* Footer section */
 
 #logo {
-    width: 140px;
+    width: 200px;
     height: auto;
+    transform: scale(2);
+    transform-origin: center center;
     margin-right: 1em;
 }
 
@@ -589,6 +598,7 @@ margin-top: 15px;
 
   #logo {
     width: 180px;
+    transform: none;
     margin-right: 0.5em;
   }
 

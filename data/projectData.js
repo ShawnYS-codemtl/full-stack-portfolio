@@ -63,6 +63,27 @@ export const projects = [
         }
     },
     {
+        "id": "face-journal",
+        "name": "Face Time-Lapse Journal",
+        "tagline": "Private mobile app to journal your face over time and scrub through the change.",
+        "highlights": [
+            "Time scrubber morphs through dated selfies with face-landmark auto-alignment",
+            "On-device encrypted storage behind a biometric app lock — nothing is uploaded",
+            "Passphrase-encrypted export/import backup and optional daily capture reminders"
+        ],
+        "desc": "A private React Native/Expo app for journaling your own face over time: front-camera capture into an encrypted on-device sandbox, a scrubber that morphs through dated photos with face-landmark alignment, calendar and journaling views, biometric lock, and passphrase-encrypted backup — no account, no backend, nothing uploaded.",
+        "technologies": ['React Native', 'Expo', 'TypeScript', 'VisionCamera', 'Face Detection', 'SQLite', 'Reanimated', 'libsodium', 'Expo Notifications'],
+        "github_repo": "https://github.com/ShawnYS-codemtl/face-journal",
+        "direct_link": null,
+        "img": null,
+        "featured": true,
+        "details": {
+            "problem": "People take periodic selfies to watch themselves change over months and years, but keeping them in the system camera roll clutters the main photo library and makes chronological review painful. Existing apps drift into skin-scoring or social feeds — there was no private, dedicated home built purely for seeing your own face change over time.",
+            "approach": "React Native + Expo (TypeScript). The front camera saves each shot date-stamped into a private app sandbox (never the system photo library), tracked in SQLite, with a faint ghost overlay of the previous photo for consistent framing. The hero experience is a horizontal scrubber (Reanimated) that morphs through frames, with face-landmark auto-alignment so consecutive photos register into a smooth morph instead of a jittery slideshow; a calendar/grid jumps to any date and day-level notes attach to entries. Privacy is local-first: a biometric/passcode app lock on open, and a passphrase-encrypted (libsodium) export bundle for user-owned backup. Optional local reminders (a fixed time or a BeReal-style random daily time) skip days already captured.",
+            "outcome": "A working, private-by-default journaling app for iOS and Android — no account, no server, nothing uploaded — where capturing today's photo is one or two taps and the scrubber makes subtle change over time genuinely visible."
+        }
+    },
+    {
         "id": "smartly-goals",
         "name": "Smartly Goals",
         "tagline": "AI-powered SMART goal builder with real-time feedback and PDF export.",
