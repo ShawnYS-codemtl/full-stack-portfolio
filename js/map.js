@@ -85,6 +85,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("panel-close").addEventListener("click", () => closePanel(panel));
 
+    // Tapping the dimmed backdrop (mobile) closes the panel
+    const backdrop = document.getElementById("panel-backdrop");
+    if (backdrop) backdrop.addEventListener("click", () => closePanel(panel));
+
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && !panel.hidden) closePanel(panel);
     });
@@ -444,6 +448,8 @@ function openPanel(loc, node, panel) {
     }
 
     panel.hidden = false;
+    const backdrop = document.getElementById("panel-backdrop");
+    if (backdrop) backdrop.hidden = false;
     panel.scrollTop = 0;
     // Make the panel shareable without adding a history entry per click.
     history.replaceState(null, "", `#${loc.id}`);
@@ -452,6 +458,8 @@ function openPanel(loc, node, panel) {
 
 function closePanel(panel) {
     panel.hidden = true;
+    const backdrop = document.getElementById("panel-backdrop");
+    if (backdrop) backdrop.hidden = true;
     history.replaceState(null, "", location.pathname + location.search);
     if (openedFromNode) {
         openedFromNode.focus();

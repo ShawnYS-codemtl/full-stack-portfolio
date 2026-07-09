@@ -4,9 +4,39 @@ document.addEventListener("DOMContentLoaded", () => {
     // Navbar hamburger toggle
     const toggleButton = document.querySelector(".nav-toggle");
     const navLinks = document.querySelector(".nav-links");
-    toggleButton.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
-    });
+
+    const setMenu = (open) => {
+        navLinks.classList.toggle("show", open);
+        toggleButton.setAttribute("aria-expanded", String(open));
+    };
+
+    if (toggleButton && navLinks) {
+        toggleButton.setAttribute("aria-expanded", "false");
+
+        toggleButton.addEventListener("click", (e) => {
+            e.stopPropagation();
+            setMenu(!navLinks.classList.contains("show"));
+        });
+
+        // Close the menu after tapping a nav link
+        navLinks.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => setMenu(false));
+        });
+
+        // Close on outside click or Esc
+        document.addEventListener("click", (e) => {
+            if (
+                navLinks.classList.contains("show") &&
+                !navLinks.contains(e.target) &&
+                !toggleButton.contains(e.target)
+            ) {
+                setMenu(false);
+            }
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") setMenu(false);
+        });
+    }
 
     // Theme toggle
     const themeToggle = document.querySelector(".theme-toggle");

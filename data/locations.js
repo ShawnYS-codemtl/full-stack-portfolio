@@ -94,6 +94,7 @@ export const locations = [
         name: 'Dairy Queen',
         neighbourhood: 'Crew Member',
         category: 'job',
+        order: 3,
         coords: { x: 158, y: 197 },
         blurb: "Prime Covid-era employment, complete with classified DQ secrets I'm contractually obligated to keep vague about. Summer rushes taught me to work under pressure; winter shifts alone taught me real responsibility. Botched orders came home as family snacks — zero-waste policy, unofficially. Good era, right up until everyone quit and the workforce became exclusively 15-year-olds."
     },
@@ -102,6 +103,7 @@ export const locations = [
         name: 'Sushi Ya Matcha',
         neighbourhood: 'Sushi Chef',
         category: 'job',
+        order: 4,
         coords: { x: 111, y: 190 },
         blurb: "A friend's parents opened this place and needed hands, so I became a sushi chef for a few months — or 'roller', if we're being honest about what the job actually was. Small, cute spot, tucked into an indoor mall with no windows nor much needed sunlight. Pro tip from the trenches: mayo on the gloves keeps the rice from sticking. You're welcome."
     },
@@ -110,6 +112,7 @@ export const locations = [
         name: 'Pointe-Claire Day Camp',
         neighbourhood: 'Grasshopper Position',
         category: 'job',
+        order: 2,
         coords: { x: 110, y: 247 },
         blurb: "One summer, mid-Covid, hopping between groups instead of managing one alone — genuinely the best arrangement going. Nobody expected me to be good with kids, least of all me. Turned out to be the laid-back, competitive type who got along great with the sassiest campers. Fond memories overall — deeply regrettable ponytail, on hair that had zero business being so long."
     },
@@ -118,6 +121,7 @@ export const locations = [
         name: 'Sansotei Ramen',
         neighbourhood: 'Server',
         category: 'job',
+        order: 1,
         coords: { x: 302, y: 230 },
         blurb: "Two years part-time serving here, and somehow it turned into one of the best social circles I've got — coworkers became genuine friends, and even the ones who didn't still got the full download on my personal life mid-shift. Ready to leave for the tech career, but know I'll miss the company more than I'll admit. A little tired of ramen at this point, and even more tired of customer-pleasing — turns out I'm a people person, not a stranger pleaser. Possibly not the ideal mindset for a server job."
     },
@@ -126,6 +130,7 @@ export const locations = [
         name: 'Dollarama',
         neighbourhood: 'Retail Associate',
         category: 'job',
+        order: 5,
         coords: { x: 133, y: 220 },
         blurb: "First real job, a quick bike or car ride away depending on the day. Lots of manual work — warehouse duty, trash detail, repeat. Turns out 'everything's a few dollars' doesn't mean anything's free — couldn't even take the garbage home. Plot twist: my manager was secretly a pastor, and breaks sometimes came with an unscheduled Jesus talk and a pamphlet. Quit the second school started and never looked back."
     },

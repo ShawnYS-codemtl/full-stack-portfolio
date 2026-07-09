@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Explore My Montreal — Shawn Yat Sin</title>
     <meta name="description" content="An interactive, retro game-style map of the Island of Montreal. Click the locations to explore Shawn Yat Sin's journey, projects, and how to get in touch.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -129,6 +129,9 @@
                     <g id="map-nodes"></g>
                     <g id="map-avatar" aria-hidden="true"></g>
                 </svg>
+
+                <!-- Dimmed backdrop behind the panel (mobile only) -->
+                <div id="panel-backdrop" class="panel-backdrop" hidden></div>
 
                 <!-- Dialogue-box info panel -->
                 <div id="location-panel" class="location-panel" role="dialog" aria-modal="false"
